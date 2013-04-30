@@ -1,0 +1,55 @@
+rebuild-needed = false
+variant = Android/Android Release 
+success = true
+timestamp = 1367290948511
+output-main = C:\\\\MoSync\\\\workspace\\\\The_Game\\\\Output\\\\Release\\\\Android\\\\Android\\\\package\\\\The_Game.apk
+
+[files]
+.git/refs/remotes/origin/HEAD = 1367290734656
+.project = 1367290921481
+.mosyncproject.local = 1367290921737
+.git/hooks/pre-commit.sample = 1367290731835
+.mosyncproject = 1367290921737
+.git/logs/refs/remotes/origin/HEAD = 1367290734658
+.git/config = 1367290734664
+README.md = 1367290734673
+.cproject = 1367290921505
+.git/objects/c1/512934f0d5a12ebc071b684ab57ad3f9a171c7 = 1367290734369
+.git/refs/heads/master = 1367290734661
+.git/hooks/commit-msg.sample = 1367290731821
+.git/info/exclude = 1367290731840
+.git/objects/c7/650d83e24fea7a6be730966c91d8958ed93a48 = 1367290734368
+.git/hooks/post-receive.sample = 1367290731822
+.git/logs/HEAD = 1367290734662
+.git/logs/refs/heads/master = 1367290734661
+.git/HEAD = 1367290734658
+.git/description = 1367290731798
+.git/packed-refs = 1367290734632
+main.cpp = 1367290921518
+.git/index = 1367290734673
+.git/hooks/prepare-commit-msg.sample = 1367290731839
+.git/objects/ef/8481bdbb8c79659ea185eb5754405e364a6796 = 1367290734369
+.settings/org.eclipse.core.resources.prefs = 1367290921509
+.git/hooks/update.sample = 1367290731839
+.git/hooks/post-commit.sample = 1367290731822
+.git/hooks/pre-rebase.sample = 1367290731836
+.git/hooks/post-update.sample = 1367290731823
+.git/hooks/pre-applypatch.sample = 1367290731823
+.git/hooks/applypatch-msg.sample = 1367290731811
+
+[dependencies]
+/The_Game/main.cpp = /The_Game/Output/Release/Android/Android/main.s
+/The_Game/Output/Release/Android/Android/main.s = /The_Game/MoSync/include/mavsprintf.h, /The_Game/MoSync/include/MAUtil/ListenerSet.h, /The_Game/MoSync/include/IX_OPENGL_ES.h, /The_Game/MoSync/include/mactype.h, /The_Game/MoSync/include/GLES/gl.h, /The_Game/MoSync/include/maapi_defs.h, /The_Game/MoSync/include/maassert.h, /The_Game/MoSync/include/mastdlib.h, /The_Game/MoSync/include/MAUtil/GLMoblet.h, /The_Game/main.cpp, /The_Game/MoSync/include/maarg.h, /The_Game/MoSync/include/maapi.h, /The_Game/MoSync/include/MAUtil/Environment.h, /The_Game/MoSync/include/MAUtil/Moblet.h, /The_Game/MoSync/include/mastring.h, /The_Game/MoSync/include/ma.h, /The_Game/MoSync/include/maxtoa.h, /The_Game/MoSync/include/MAUtil/Vector.h, /The_Game/MoSync/include/IX_GL1.h
+
+[build-properties]
+build.prefs:memory.heap/Debug = 3072
+build.prefs:additional.libraries/Debug = MAUtilD.lib
+template.id = project.opengles
+build.prefs:additional.libraries = MAUtil.lib
+build.prefs:memory.stack/Release = 512
+build.prefs:memory.heap/Release = 3072
+build.prefs:memory.data/Debug = 4096
+build.prefs:memory.stack/Debug = 512
+profile.mgr.type = 0
+build.prefs:memory.data/Release = 4096
+
