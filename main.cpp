@@ -1,3 +1,5 @@
+#include "GameWorld.h"
+
 #include <maapi.h>
 #include <mastdlib.h>
 #include <mavsprintf.h>
@@ -5,7 +7,10 @@
 #include <MAUtil/GLMoblet.h>
 #include <GLES/gl.h>
 
+
 using namespace MAUtil;
+
+#define LOGIC_UPDATE_INTERVAL 20
 
 /**
  * Moblet to be used as a template for an Open GL application.
@@ -15,7 +20,7 @@ using namespace MAUtil;
 class MyGLMoblet : public GLMoblet
 {
 public:
-
+	GameWorld* gameWorld;
 	// ================== Constructor ==================
 
 	/**
@@ -36,10 +41,11 @@ public:
 	 */
 	void init()
 	{
+		gameWorld = new GameWorld();
+		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
+
 		// Set the GL viewport to be the entire MoSync screen.
-		setViewport(
-			EXTENT_X(maGetScrSize()),
-			EXTENT_Y(maGetScrSize()));
+		setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
 		// Initialize OpenGL.
 		initGL();
@@ -91,6 +97,8 @@ public:
 	}
 
 private:
+
+
 
 	// ================== OpenGL/rendering methods ==================
 
@@ -202,6 +210,6 @@ private:
  */
 extern "C" int MAMain()
 {
-	Moblet::run(new MyGLMoblet());
+	Moblet::run(new MyGLMoblet);
 	return 0;
 }

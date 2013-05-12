@@ -16,17 +16,19 @@ class GameObj{
 		RIGHT
 	};
 
-
-
 	protected:
 		int x;						//x position
 		int y;						//y position
 		int width;					//width of obj(for image)
 		int height;					//height of obj(for image)
 		int state;
+		int direction;
 
 	public:
 		GameObj(int px, int py);
+
+		//Direction getDirection();
+		//void setDirection(Direction direction);
 
 		int getHeight() const;
 		void setHeight(int height);

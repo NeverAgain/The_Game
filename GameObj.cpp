@@ -9,6 +9,9 @@
 
 GameObj::GameObj(int px, int py):x(px),y(py){}
 
+//Direction GameObj::getDirection() { return direction;	}
+//void GameObj::setDirection(Direction direction) { this->direction = direction;	}
+
 int GameObj::getX() const {	return x;	}
 void GameObj::setX(int x) {	this->x = x;}
 
