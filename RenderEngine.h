@@ -12,11 +12,18 @@
 
 class RenderEngine
 {
+	private:
+		GLfloat mStartTime;
+		GLfloat mDepth;
+
 	public :
 		RenderEngine();
 
-		GLfloat mStartTime;
-		GLfloat mDepth;
+		void setMDepth(float mDepth);
+		float getMDepth();
+
+		void setMStartTime(int mDepth);
+		int getMStartTime();
 
 		void initGL();
 		void setViewport(int width, int height);

@@ -11,6 +11,22 @@ RenderEngine::RenderEngine()
 
 }
 
+void RenderEngine::setMDepth(float mDepth){
+	this->mDepth = mDepth;
+}
+
+float RenderEngine::getMDepth(){
+	return this->mDepth;
+}
+
+void RenderEngine::setMStartTime(int mStartTime){
+	this->mStartTime = mStartTime;
+}
+
+int RenderEngine::getMStartTime(){
+	return this->mStartTime;
+}
+
 void RenderEngine::initGL()
 {
 	glShadeModel(GL_SMOOTH);
