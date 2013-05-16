@@ -11,6 +11,7 @@ RenderEngine::RenderEngine()
 
 }
 
+<<<<<<< HEAD
 void RenderEngine::setMDepth(float mDepth){
 	this->mDepth = mDepth;
 }
@@ -27,6 +28,8 @@ GLfloat RenderEngine::getMStartTime(){
 	return this->mStartTime;
 }
 
+=======
+>>>>>>> parent of f4eea50... got render engine in own class
 void RenderEngine::initGL()
 {
 	glShadeModel(GL_SMOOTH);

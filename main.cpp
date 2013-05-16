@@ -25,12 +25,17 @@ public:
 	GameWorld* gameWorld;
 	RenderEngine* renderEngine;
 
+
 	// ================== Constructor ==================
 	/**
 	 * Initialize rendering parameters.
 	 */
-	MyGLMoblet():GLMoblet(GLMoblet::GL1)
+	MyGLMoblet() :
+		GLMoblet(GLMoblet::GL1),
+		mDepth(5.0f),
+		mStartTime(maGetMilliSecondCount())
 	{
+<<<<<<< HEAD
 
 		gameWorld = new GameWorld();
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
@@ -45,6 +50,8 @@ public:
 		renderEngine->setMDepth(5.0f);
 		renderEngine->setMStartTime(maGetMilliSecondCount());
 
+=======
+>>>>>>> parent of f4eea50... got render engine in own class
 	}
 
 	// ================== Event methods ==================
@@ -55,6 +62,10 @@ public:
 	 */
 	void init()
 	{
+		gameWorld = new GameWorld();
+		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
+
+		renderEngine = new RenderEngine();
 		// Set the GL viewport to be the entire MoSync screen.
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
@@ -73,10 +84,10 @@ public:
 	void draw()
 	{
 		// Compute rotation.
-		GLfloat rotation = (maGetMilliSecondCount() - renderEngine->getMStartTime()) * -0.05f;
+		GLfloat rotation = (maGetMilliSecondCount() - renderEngine->mStartTime) * -0.05f;
 
 		// Render scene.
-		renderEngine->draw(renderEngine->getMDepth(), rotation);
+		renderEngine->draw(renderEngine->mDepth, rotation);
 	}
 
 	/**

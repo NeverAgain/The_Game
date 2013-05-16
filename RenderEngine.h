@@ -12,18 +12,19 @@
 
 class RenderEngine
 {
-	private:
-		GLfloat mStartTime;
-		GLfloat mDepth;
-
 	public :
 		RenderEngine();
 
+<<<<<<< HEAD
 		void setMDepth(float mDepth);
 		float getMDepth();
 
 		void setMStartTime(GLfloat mDepth);
 		GLfloat getMStartTime();
+=======
+		GLfloat mStartTime;
+		GLfloat mDepth;
+>>>>>>> parent of f4eea50... got render engine in own class
 
 		void initGL();
 		void setViewport(int width, int height);
