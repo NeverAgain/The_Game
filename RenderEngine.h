@@ -22,8 +22,8 @@ class RenderEngine
 		void setMDepth(float mDepth);
 		float getMDepth();
 
-		void setMStartTime(int mDepth);
-		int getMStartTime();
+		void setMStartTime(GLfloat mDepth);
+		GLfloat getMStartTime();
 
 		void initGL();
 		void setViewport(int width, int height);

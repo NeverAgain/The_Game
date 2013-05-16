@@ -23,5 +23,3 @@ void GameObj::setHeight(int height) {this->height = height;}
 
 int GameObj::getWidth() const {		return width;	}
 void GameObj::setWidth(int width) {	this->width = width;}
-
-

@@ -19,11 +19,11 @@ float RenderEngine::getMDepth(){
 	return this->mDepth;
 }
 
-void RenderEngine::setMStartTime(int mStartTime){
+void RenderEngine::setMStartTime(GLfloat mStartTime){
 	this->mStartTime = mStartTime;
 }
 
-int RenderEngine::getMStartTime(){
+GLfloat RenderEngine::getMStartTime(){
 	return this->mStartTime;
 }
 

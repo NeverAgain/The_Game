@@ -8,9 +8,11 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include <conprint.h>
 #include "GameObj.h"
+#include "Convert/Convert.h"
 
-class Player: protected GameObj{
+class Player: public GameObj{
 	enum PlayerState{
 		STAND,
 		MOVE,
@@ -20,7 +22,7 @@ class Player: protected GameObj{
 
 	public:
 		Player(int px, int py);
-
+		~Player();
 	private:
 };
 

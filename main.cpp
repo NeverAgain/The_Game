@@ -1,5 +1,6 @@
 #include "GameWorld.h"
 #include "RenderEngine.h"
+#include "Player.h"
 
 #include <maapi.h>
 #include <mastdlib.h>
@@ -33,6 +34,12 @@ public:
 
 		gameWorld = new GameWorld();
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
+
+		Player *player1 = new Player(1,0);
+		Player *player2 = new Player(2,0);
+		gameWorld->addGameObj(player1);
+		gameWorld->addGameObj(player2);
+
 
 		renderEngine = new RenderEngine();
 		renderEngine->setMDepth(5.0f);

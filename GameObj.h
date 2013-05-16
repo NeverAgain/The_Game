@@ -42,6 +42,8 @@ class GameObj{
 		int getY() const;
 		void setY(int y);
 
+		virtual void update();
+
 };
 
 
