@@ -23,6 +23,5 @@ void GameObj::update(){
 	//x = 3;
 	//lprintfln("player Event fired");
 
-	String test = "LOG "+Convert::toString(x);
-	lprintfln(test.c_str());
+	lprintfln(("LOG "+Convert::toString(x)).c_str());
 }

@@ -175,7 +175,7 @@
 	.stabs	"GLsizeiptr:t(11,33)=(11,7)",128,0,73,0
 	.stabn	162,0,0,0
 	.stabn	162,0,0,0
-	.stabs	"RenderEngine:Tt(9,1)=s8mStartTime:/0(11,29),0,32;mDepth:/0(11,29),32,32;__base_ctor::(9,2)=#(9,1),(0,6),(9,3)=*(9,1),(0,6);:_ZN12RenderEngineC2Ev;2A.;__comp_ctor::(9,2):_ZN12RenderEngineC1Ev;2A.;setMDepth::(9,4)=#(9,1),(0,6),(9,3),(0,9),(0,6);:_ZN12RenderEngine9setMDepthEf;2A.;getMDepth::(9,5)=#(9,1),(0,9),(9,3),(0,6);:_ZN12RenderEngine9getMDepthEv;2A.;setMStartTime::(9,6)=#(9,1),(0,6),(9,3),(11,29),(0,6);:_ZN12RenderEngine13setMStartTimeEf;2A.;getMStartTime::(9,7)=#(9,1),(11,29),(9,3),(0,6);:_ZN12RenderEngine13getMStartTimeEv;2A.;initGL::(9,2):_ZN12RenderEngine6initGLEv;2A.;setViewport::(9,8)=#(9,1),(0,6),(9,3),(0,3),(0,3),(0,6);:_ZN12RenderEngine11setViewportEii;2A.;draw::(9,9)=#(9,1),(0,6),(9,3),(11,29),(11,29),(0,6);:_ZN12RenderEngine4drawEff;2A.;computeZoomFactor::(9,10)=#(9,1),(0,6),(9,3),(4,27),(0,6);:_ZN12RenderEngine17computeZoomFactorE9MAPoint2d;2A.;gluPerspective::(9,11)=#(9,1),(0,6),(9,3),(11,29),(11,29),(11,29),(11,29),(0,6);:_ZN12RenderEngine14gluPerspectiveEffff;2A.;operator=::(9,12)=#(9,1),(9,13)=&(9,1),(9,3),(9,14)=&(9,15)=k(9,1),(0,6);:_ZN12RenderEngineaSERKS_;2A.;__base_ctor::(9,16)=#(9,1),(0,6),(9,3),(9,14),(0,6);:_ZN12RenderEngineC2ERKS_;2A.;__comp_ctor::(9,16):_ZN12RenderEngineC1ERKS_;2A.;;",128,0,14,0
+	.stabs	"RenderEngine:Tt(9,1)=s8mStartTime:(11,29),0,32;mDepth:(11,29),32,32;__base_ctor::(9,2)=#(9,1),(0,6),(9,3)=*(9,1),(0,6);:_ZN12RenderEngineC2Ev;2A.;__comp_ctor::(9,2):_ZN12RenderEngineC1Ev;2A.;setMDepth::(9,4)=#(9,1),(0,6),(9,3),(0,9),(0,6);:_ZN12RenderEngine9setMDepthEf;2A.;getMDepth::(9,5)=#(9,1),(0,9),(9,3),(0,6);:_ZN12RenderEngine9getMDepthEv;2A.;setMStartTime::(9,6)=#(9,1),(0,6),(9,3),(11,29),(0,6);:_ZN12RenderEngine13setMStartTimeEf;2A.;getMStartTime::(9,7)=#(9,1),(11,29),(9,3),(0,6);:_ZN12RenderEngine13getMStartTimeEv;2A.;initGL::(9,2):_ZN12RenderEngine6initGLEv;2A.;setViewport::(9,8)=#(9,1),(0,6),(9,3),(0,3),(0,3),(0,6);:_ZN12RenderEngine11setViewportEii;2A.;draw::(9,2):_ZN12RenderEngine4drawEv;2A.;computeZoomFactor::(9,9)=#(9,1),(0,6),(9,3),(4,27),(0,6);:_ZN12RenderEngine17computeZoomFactorE9MAPoint2d;2A.;gluPerspective::(9,10)=#(9,1),(0,6),(9,3),(11,29),(11,29),(11,29),(11,29),(0,6);:_ZN12RenderEngine14gluPerspectiveEffff;2A.;operator=::(9,11)=#(9,1),(9,12)=&(9,1),(9,3),(9,13)=&(9,14)=k(9,1),(0,6);:_ZN12RenderEngineaSERKS_;2A.;__base_ctor::(9,15)=#(9,1),(0,6),(9,3),(9,13),(0,6);:_ZN12RenderEngineC2ERKS_;2A.;__comp_ctor::(9,15):_ZN12RenderEngineC1ERKS_;2A.;;",128,0,14,0
 	.stabn	162,0,0,0
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\/Player.h",130,0,0,0
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\/Convert/Convert.h",130,0,0,0
@@ -203,16 +203,16 @@
 	.stabs	"GLMoblet::ApiVersion:t(19,1)=eGL1:1,GL2:2,;",128,0,52,0
 	.stabn	162,0,0,0
 .code
-	.stabs	"MAMain:F(0,3)",36,0,117,_MAMain
+	.stabs	"MAMain:F(0,3)",36,0,127,_MAMain
 	.global	_MAMain
 
 .func _MAMain, 0, int
-	.line 117
+	.line 127
 	push rt,d0
 	ld   fr,sp
 	add  fr,#0xc
 	.dlab LBB2
-	.line 118
+	.line 128
 	ld   i0,#0xd8
 	call &__Znwm
 	ld   d0,r14
@@ -221,25 +221,25 @@
 	ld   r14,d0
 	ld   i0,r14
 	call &__ZN6MAUtil6Moblet3runEPS0_
-	.line 119
+	.line 129
 	ld   r14,#0x0
 	.dlab LBE2
-	.line 120
+	.line 130
 	pop  rt,d0
 	ret
 Lscope0:
-	.stabs	"_ZN10MyGLMobletC1Ev:f(0,6)",36,0,32,__ZN10MyGLMobletC1Ev
-	.stabs	"this:p(0,25)=k(0,26)=*(0,27)=xsMyGLMoblet:",160,0,32,-20
+	.stabs	"_ZN10MyGLMobletC1Ev:f(0,6)",36,0,33,__ZN10MyGLMobletC1Ev
+	.stabs	"this:p(0,25)=k(0,26)=*(0,27)=xsMyGLMoblet:",160,0,33,-20
 
 .func __ZN10MyGLMobletC1Ev, 1, void
-	.line 32
+	.line 33
 	push rt,d1
 	sub  sp,#0xc
 	ld   fr,sp
 	add  fr,#0x1c
 	ld   [fr,-20],i0
 	.dlab LBB3
-	.line 33
+	.line 35
 	ld   i0,[fr,-20]
 	ld   i1,#0x1
 	call &__ZN6MAUtil8GLMobletC2Ei
@@ -263,7 +263,7 @@ Lscope0:
 	ld   r0,#__ZTV10MyGLMoblet+168
 	ld   [r14],r0
 	.dlab LBB4
-	.line 35
+	.line 36
 	ld   d1,[fr,-20]
 	ld   i0,#0x14
 	call &__Znwm
@@ -271,14 +271,14 @@ Lscope0:
 	ld   i0,d0
 	call &__ZN9GameWorldC1Ev
 	ld   [d1,208],d0
-	.line 36
+	.line 37
 	ld   r14,[fr,-20]
 	ld   i0,[fr,-20]
 	ld   i1,[r14,208]
 	ld   i2,#0x14
 	ld   i3,#0x0
 	call &__ZN6MAUtil11Environment8addTimerEPNS_13TimerListenerEii
-	.line 38
+	.line 39
 	ld   i0,#0x1c
 	call &__Znwm
 	ld   d0,r14
@@ -287,7 +287,7 @@ Lscope0:
 	ld   i2,#0x0
 	call &__ZN6PlayerC1Eii
 	ld   [fr,-24],d0
-	.line 39
+	.line 40
 	ld   i0,#0x1c
 	call &__Znwm
 	ld   d0,r14
@@ -296,17 +296,17 @@ Lscope0:
 	ld   i2,#0x0
 	call &__ZN6PlayerC1Eii
 	ld   [fr,-28],d0
-	.line 40
+	.line 41
 	ld   r14,[fr,-20]
 	ld   i0,[r14,208]
 	ld   i1,[fr,-24]
 	call &__ZN9GameWorld10addGameObjEP7GameObj
-	.line 41
+	.line 42
 	ld   r14,[fr,-20]
 	ld   i0,[r14,208]
 	ld   i1,[fr,-28]
 	call &__ZN9GameWorld10addGameObjEP7GameObj
-	.line 44
+	.line 45
 	ld   d1,[fr,-20]
 	ld   i0,#0x8
 	call &__Znwm
@@ -314,12 +314,12 @@ Lscope0:
 	ld   i0,d0
 	call &__ZN12RenderEngineC1Ev
 	ld   [d1,212],d0
-	.line 45
+	.line 46
 	ld   r14,[fr,-20]
 	ld   i0,[r14,212]
 	ld i1,#0x40a00000		; 4.79243676466e-322
 	call &__ZN12RenderEngine9setMDepthEf
-	.line 46
+	.line 47
 	call &_maGetMilliSecondCount
 	ld   i0,r14
 	call &___floatsisf
@@ -330,12 +330,12 @@ Lscope0:
 	call &__ZN12RenderEngine13setMStartTimeEf
 	.dlab LBE4
 	.dlab LBE3
-	.line 48
+	.line 49
 	add  sp,#0xc
 	pop  rt,d1
 	ret
-	.stabs	"player1:(0,28)=*(0,29)=xsPlayer:",128,0,38,-24
-	.stabs	"player2:(0,28)",128,0,39,-28
+	.stabs	"player1:(0,28)=*(0,29)=xsPlayer:",128,0,39,-24
+	.stabs	"player2:(0,28)",128,0,40,-28
 	.stabn	192,0,0,LBB4-__ZN10MyGLMobletC1Ev
 	.stabn	224,0,0,LBE4-__ZN10MyGLMobletC1Ev
 Lscope1:
@@ -426,89 +426,86 @@ Lscope2:
 	pop  rt,fr
 	ret
 Lscope3:
-	.stabs	"_ZN10MyGLMoblet4drawEv:f(0,6)",36,0,74,__ZN10MyGLMoblet4drawEv
-	.stabs	"this:p(0,25)",160,0,74,-16
+	.stabs	"_ZN10MyGLMoblet4drawEv:f(0,6)",36,0,79,__ZN10MyGLMoblet4drawEv
+	.stabs	"this:p(0,25)",160,0,79,-12
 
 .func __ZN10MyGLMoblet4drawEv, 1, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\main.cpp",132,0,0,Ltext2
 Ltext2:
-	.line 74
-	push rt,d0
-	sub  sp,#0x8
-	ld   fr,sp
-	add  fr,#0x14
-	ld   [fr,-16],i0
-	.dlab LBB5
-	.dlab LBB6
-	.line 76
-	call &_maGetMilliSecondCount
-	ld   i0,r14
-	call &___floatsisf
-	ld d0,r14
-	ld   r14,[fr,-16]
-	ld   i0,[r14,212]
-	call &__ZN12RenderEngine13getMStartTimeEv
-	ld i0,d0
-	ld i1,r14
-	call &___subsf3
-	ld i0,r14
-	ld i1,#0xbd4ccccd		; 2.1219957302e-314
-	call &___mulsf3
-	ld  [fr,-20],r14
 	.line 79
-	ld   r14,[fr,-16]
-	ld   i0,[r14,212]
-	call &__ZN12RenderEngine9getMDepthEv
-	ld r0,r14
-	ld   r14,[fr,-16]
-	ld   i0,[r14,212]
-	ld i1,r0
-	ld i2,[fr,-20]
-	call &__ZN12RenderEngine4drawEff
-	.dlab LBE6
-	.dlab LBE5
-	.line 80
-	add  sp,#0x8
-	pop  rt,d0
-	ret
-	.stabs	"rotation:(11,29)",128,0,76,-20
-	.stabn	192,0,0,LBB6-__ZN10MyGLMoblet4drawEv
-	.stabn	224,0,0,LBE6-__ZN10MyGLMoblet4drawEv
-Lscope4:
-	.stabs	"_ZN10MyGLMoblet4initEv:f(0,6)",36,0,57,__ZN10MyGLMoblet4initEv
-	.stabs	"this:p(0,25)",160,0,57,-16
-
-.func __ZN10MyGLMoblet4initEv, 1, void
-	.line 57
-	push rt,d0
+	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
-	add  fr,#0x10
-	ld   [fr,-16],i0
-	.dlab LBB7
+	add  fr,#0xc
+	ld   [fr,-12],i0
+	.dlab LBB5
+	.line 88
+	ld   r14,[fr,-12]
+	ld   i0,[r14,212]
+	call &__ZN12RenderEngine4drawEv
+	.dlab LBE5
+	.line 89
+	add  sp,#0x4
+	pop  rt,fr
+	ret
+Lscope4:
+	.stabs	"_ZN10MyGLMoblet4initEv:f(0,6)",36,0,58,__ZN10MyGLMoblet4initEv
+	.stabs	"this:p(0,25)",160,0,58,-20
+
+.func __ZN10MyGLMoblet4initEv, 1, void
+	.line 58
+	push rt,d1
+	sub  sp,#0x4
+	ld   fr,sp
+	add  fr,#0x14
+	ld   [fr,-20],i0
+	.dlab LBB6
 	.line 59
+	ld   d1,[fr,-20]
+	ld   i0,#0x14
+	call &__Znwm
+	ld   d0,r14
+	ld   i0,d0
+	call &__ZN9GameWorldC1Ev
+	ld   [d1,208],d0
+	.line 60
+	ld   r14,[fr,-20]
+	ld   i0,[fr,-20]
+	ld   i1,[r14,208]
+	ld   i2,#0x14
+	ld   i3,#0x0
+	call &__ZN6MAUtil11Environment8addTimerEPNS_13TimerListenerEii
+	.line 62
+	ld   d1,[fr,-20]
+	ld   i0,#0x8
+	call &__Znwm
+	ld   d0,r14
+	ld   i0,d0
+	call &__ZN12RenderEngineC1Ev
+	ld   [d1,212],d0
+	.line 64
 	call &_maGetScrSize
 	sra  r14,#0x10
 	xh d0,r14
 	call &_maGetScrSize
 	xh r0,r14
-	ld   r14,[fr,-16]
+	ld   r14,[fr,-20]
 	ld   i0,[r14,212]
 	ld   i1,d0
 	ld   i2,r0
 	call &__ZN12RenderEngine11setViewportEii
-	.line 62
-	ld   r14,[fr,-16]
+	.line 67
+	ld   r14,[fr,-20]
 	ld   i0,[r14,212]
 	call &__ZN12RenderEngine6initGLEv
-	.line 65
-	ld   i0,[fr,-16]
+	.line 70
+	ld   i0,[fr,-20]
 	ld i1,#0x42700000		; 9.53546696474e-322
 	call &__ZN6MAUtil8GLMoblet27setPreferredFramesPerSecondEf
-	.dlab LBE7
-	.line 66
+	.dlab LBE6
+	.line 71
 	add  sp,#0x4
-	pop  rt,d0
+	pop  rt,d1
 	ret
 Lscope5:
 	.set	%0=__ZN6MAUtil6Moblet11customEventERK7MAEvent
@@ -736,8 +733,8 @@ Lscope14:
 	ret
 Lscope15:
 	.set	%5=__ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d
-	.stabs	"this:p(0,25)",160,0,106,-12
-	.stabs	"point:p(4,27)",160,0,106,-20
+	.stabs	"this:p(0,25)",160,0,116,-12
+	.stabs	"point:p(4,27)",160,0,116,-20
 
 .func __ZThn168_N10MyGLMoblet16pointerMoveEventE9MAPoint2d, 3, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\main.cpp",132,0,0,Ltext4
@@ -761,12 +758,12 @@ Ltext4:
 	pop  rt,fr
 	ret
 Lscope16:
-	.stabs	"_ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d:f(0,6)",36,0,106,__ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d
-	.stabs	"this:p(0,25)",160,0,106,-12
-	.stabs	"point:p(4,27)",160,0,106,-20
+	.stabs	"_ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d:f(0,6)",36,0,116,__ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d
+	.stabs	"this:p(0,25)",160,0,116,-12
+	.stabs	"point:p(4,27)",160,0,116,-20
 
 .func __ZN10MyGLMoblet16pointerMoveEventE9MAPoint2d, 3, void
-	.line 106
+	.line 116
 	push rt,fr
 	sub  sp,#0xc
 	ld   fr,sp
@@ -774,8 +771,8 @@ Lscope16:
 	ld   [fr,-12],i0
 	ld   [fr,-20],i1
 	ld   [fr,-16],i2
-	.dlab LBB8
-	.line 107
+	.dlab LBB7
+	.line 117
 	ld   r0,[fr,-12]
 	ld   r14,[fr,-20]
 	ld   r15,[fr,-16]
@@ -783,15 +780,15 @@ Lscope16:
 	ld   i1,r14
 	ld   i2,r15
 	call &__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
-	.dlab LBE8
-	.line 108
+	.dlab LBE7
+	.line 118
 	add  sp,#0xc
 	pop  rt,fr
 	ret
 Lscope17:
 	.set	%6=__ZN10MyGLMoblet17pointerPressEventE9MAPoint2d
-	.stabs	"this:p(0,25)",160,0,98,-12
-	.stabs	"point:p(4,27)",160,0,98,-20
+	.stabs	"this:p(0,25)",160,0,108,-12
+	.stabs	"point:p(4,27)",160,0,108,-20
 
 .func __ZThn168_N10MyGLMoblet17pointerPressEventE9MAPoint2d, 3, void
 	.line 23
@@ -813,12 +810,12 @@ Lscope17:
 	pop  rt,fr
 	ret
 Lscope18:
-	.stabs	"_ZN10MyGLMoblet17pointerPressEventE9MAPoint2d:f(0,6)",36,0,98,__ZN10MyGLMoblet17pointerPressEventE9MAPoint2d
-	.stabs	"this:p(0,25)",160,0,98,-12
-	.stabs	"point:p(4,27)",160,0,98,-20
+	.stabs	"_ZN10MyGLMoblet17pointerPressEventE9MAPoint2d:f(0,6)",36,0,108,__ZN10MyGLMoblet17pointerPressEventE9MAPoint2d
+	.stabs	"this:p(0,25)",160,0,108,-12
+	.stabs	"point:p(4,27)",160,0,108,-20
 
 .func __ZN10MyGLMoblet17pointerPressEventE9MAPoint2d, 3, void
-	.line 98
+	.line 108
 	push rt,fr
 	sub  sp,#0xc
 	ld   fr,sp
@@ -826,8 +823,8 @@ Lscope18:
 	ld   [fr,-12],i0
 	ld   [fr,-20],i1
 	ld   [fr,-16],i2
-	.dlab LBB9
-	.line 99
+	.dlab LBB8
+	.line 109
 	ld   r0,[fr,-12]
 	ld   r14,[fr,-20]
 	ld   r15,[fr,-16]
@@ -835,8 +832,8 @@ Lscope18:
 	ld   i1,r14
 	ld   i2,r15
 	call &__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
-	.dlab LBE9
-	.line 100
+	.dlab LBE8
+	.line 110
 	add  sp,#0xc
 	pop  rt,fr
 	ret
@@ -888,9 +885,9 @@ Lscope20:
 	ret
 Lscope21:
 	.set	%8=__ZN10MyGLMoblet13keyPressEventEii
-	.stabs	"this:p(0,25)",160,0,86,-12
-	.stabs	"keyCode:p(0,3)",160,0,86,-16
-	.stabs	"nativeCode:p(0,3)",160,0,86,-20
+	.stabs	"this:p(0,25)",160,0,95,-12
+	.stabs	"keyCode:p(0,3)",160,0,95,-16
+	.stabs	"nativeCode:p(0,3)",160,0,95,-20
 
 .func __ZThn164_N10MyGLMoblet13keyPressEventEii, 3, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\main.cpp",132,0,0,Ltext6
@@ -914,13 +911,13 @@ Ltext6:
 	pop  rt,fr
 	ret
 Lscope22:
-	.stabs	"_ZN10MyGLMoblet13keyPressEventEii:f(0,6)",36,0,86,__ZN10MyGLMoblet13keyPressEventEii
-	.stabs	"this:p(0,25)",160,0,86,-12
-	.stabs	"keyCode:p(0,3)",160,0,86,-16
-	.stabs	"nativeCode:p(0,3)",160,0,86,-20
+	.stabs	"_ZN10MyGLMoblet13keyPressEventEii:f(0,6)",36,0,95,__ZN10MyGLMoblet13keyPressEventEii
+	.stabs	"this:p(0,25)",160,0,95,-12
+	.stabs	"keyCode:p(0,3)",160,0,95,-16
+	.stabs	"nativeCode:p(0,3)",160,0,95,-20
 
 .func __ZN10MyGLMoblet13keyPressEventEii, 3, void
-	.line 86
+	.line 95
 	push rt,fr
 	sub  sp,#0xc
 	ld   fr,sp
@@ -928,8 +925,8 @@ Lscope22:
 	ld   [fr,-12],i0
 	ld   [fr,-16],i1
 	ld   [fr,-20],i2
-	.dlab LBB10
-	.line 87
+	.dlab LBB9
+	.line 96
 	ld   r0,[fr,-16]
 	ld   r14,#0x124
 	jc   eq,r0,r14,#L26
@@ -938,11 +935,15 @@ Lscope22:
 	jc   eq,r0,r14,#L26
 	jp   #L24
 L26:
-	.line 90
+	.line 99
+	ld   r14,[fr,-12]
+	ld   r0,#0x0
+	ld   [r14,212],r0
+	.line 100
 	call &__ZN6MAUtil6Moblet5closeEv
 L24:
-	.dlab LBE10
-	.line 92
+	.dlab LBE9
+	.line 102
 	add  sp,#0xc
 	pop  rt,fr
 	ret
@@ -985,18 +986,18 @@ Lscope24:
 	pop  rt,fr
 	ret
 Lscope25:
-	.stabs	"_ZN10MyGLMobletD1Ev:f(0,6)",36,0,47,__ZN10MyGLMobletD1Ev
+	.stabs	"_ZN10MyGLMobletD1Ev:f(0,6)",36,0,48,__ZN10MyGLMobletD1Ev
 	.stabs	"this:p(0,25)",160,0,23,-12
 
 .func __ZN10MyGLMobletD1Ev, 1, void
-	.line 47
+	.line 48
 	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB11
-	.line 47
+	.dlab LBB10
+	.line 48
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTV10MyGLMoblet+8
 	ld   [r14],r0
@@ -1018,7 +1019,7 @@ Lscope25:
 	ld   [r14],r0
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil8GLMobletD2Ev
-	.dlab LBE11
+	.dlab LBE10
 	ld   r14,#0x1
 	and  r14,#0x2
 	ld   r0,r14
@@ -1032,18 +1033,18 @@ L29:
 	pop  rt,fr
 	ret
 Lscope26:
-	.stabs	"_ZN6MAUtil8GLMobletD2Ev:f(0,6)",36,0,33,__ZN6MAUtil8GLMobletD2Ev
+	.stabs	"_ZN6MAUtil8GLMobletD2Ev:f(0,6)",36,0,35,__ZN6MAUtil8GLMobletD2Ev
 	.stabs	"this:p(0,78)=k(0,46)",160,0,46,-12
 
 .func __ZN6MAUtil8GLMobletD2Ev, 1, void
-	.line 33
+	.line 35
 	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB12
-	.line 33
+	.dlab LBB11
+	.line 35
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTVN6MAUtil8GLMobletE+8
 	ld   [r14],r0
@@ -1065,7 +1066,7 @@ Lscope26:
 	ld   [r14],r0
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil6MobletD2Ev
-	.dlab LBE12
+	.dlab LBE11
 	ld   r14,#0x1
 	and  r14,#0x0
 	ld   r0,r14
@@ -1091,7 +1092,7 @@ Ltext7:
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB13
+	.dlab LBB12
 	.line 136
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTVN6MAUtil6MobletE+8
@@ -1124,7 +1125,7 @@ Ltext7:
 	call &__ZN6MAUtil11KeyListenerD2Ev
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil11EnvironmentD2Ev
-	.dlab LBE13
+	.dlab LBE12
 	ld   r14,#0x1
 	and  r14,#0x0
 	ld   r0,r14
@@ -1178,18 +1179,18 @@ Lscope29:
 	pop  rt,fr
 	ret
 Lscope30:
-	.stabs	"_ZN10MyGLMobletD0Ev:f(0,6)",36,0,47,__ZN10MyGLMobletD0Ev
+	.stabs	"_ZN10MyGLMobletD0Ev:f(0,6)",36,0,48,__ZN10MyGLMobletD0Ev
 	.stabs	"this:p(0,25)",160,0,23,-12
 
 .func __ZN10MyGLMobletD0Ev, 1, void
-	.line 47
+	.line 48
 	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB14
-	.line 47
+	.dlab LBB13
+	.line 48
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTV10MyGLMoblet+8
 	ld   [r14],r0
@@ -1211,7 +1212,7 @@ Lscope30:
 	ld   [r14],r0
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil8GLMobletD2Ev
-	.dlab LBE14
+	.dlab LBE13
 	ld   r14,#0x1
 	and  r14,#0x3
 	ld   r0,r14
@@ -1442,20 +1443,20 @@ Lscope38:
 	pop  rt,fr
 	ret
 Lscope39:
-	.stabs	"_ZN6MAUtil8GLMobletD0Ev:f(0,6)",36,0,33,__ZN6MAUtil8GLMobletD0Ev
+	.stabs	"_ZN6MAUtil8GLMobletD0Ev:f(0,6)",36,0,35,__ZN6MAUtil8GLMobletD0Ev
 	.stabs	"this:p(0,78)",160,0,46,-12
 
 .func __ZN6MAUtil8GLMobletD0Ev, 1, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\main.cpp",132,0,0,Ltext11
 Ltext11:
-	.line 33
+	.line 35
 	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB15
-	.line 33
+	.dlab LBB14
+	.line 35
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTVN6MAUtil8GLMobletE+8
 	ld   [r14],r0
@@ -1477,7 +1478,7 @@ Ltext11:
 	ld   [r14],r0
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil6MobletD2Ev
-	.dlab LBE15
+	.dlab LBE14
 	ld   r14,#0x1
 	and  r14,#0x3
 	ld   r0,r14
@@ -1531,20 +1532,20 @@ Lscope41:
 	pop  rt,fr
 	ret
 Lscope42:
-	.stabs	"_ZN6MAUtil8GLMobletD1Ev:f(0,6)",36,0,33,__ZN6MAUtil8GLMobletD1Ev
+	.stabs	"_ZN6MAUtil8GLMobletD1Ev:f(0,6)",36,0,35,__ZN6MAUtil8GLMobletD1Ev
 	.stabs	"this:p(0,78)",160,0,46,-12
 
 .func __ZN6MAUtil8GLMobletD1Ev, 1, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\main.cpp",132,0,0,Ltext13
 Ltext13:
-	.line 33
+	.line 35
 	push rt,fr
 	sub  sp,#0x4
 	ld   fr,sp
 	add  fr,#0xc
 	ld   [fr,-12],i0
-	.dlab LBB16
-	.line 33
+	.dlab LBB15
+	.line 35
 	ld   r14,[fr,-12]
 	ld   r0,#__ZTVN6MAUtil8GLMobletE+8
 	ld   [r14],r0
@@ -1566,7 +1567,7 @@ Ltext13:
 	ld   [r14],r0
 	ld   i0,[fr,-12]
 	call &__ZN6MAUtil6MobletD2Ev
-	.dlab LBE16
+	.dlab LBE15
 	ld   r14,#0x1
 	and  r14,#0x2
 	ld   r0,r14

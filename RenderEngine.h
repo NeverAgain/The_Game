@@ -15,20 +15,19 @@ class RenderEngine
 	public :
 		RenderEngine();
 
-<<<<<<< HEAD
+
 		void setMDepth(float mDepth);
 		float getMDepth();
 
 		void setMStartTime(GLfloat mDepth);
 		GLfloat getMStartTime();
-=======
+
 		GLfloat mStartTime;
 		GLfloat mDepth;
->>>>>>> parent of f4eea50... got render engine in own class
 
 		void initGL();
 		void setViewport(int width, int height);
-		void draw(GLfloat z, GLfloat rotation);
+		void draw();
 		void computeZoomFactor(MAPoint2d point);
 		void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
 

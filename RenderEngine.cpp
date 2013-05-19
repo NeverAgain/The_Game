@@ -11,7 +11,6 @@ RenderEngine::RenderEngine()
 
 }
 
-<<<<<<< HEAD
 void RenderEngine::setMDepth(float mDepth){
 	this->mDepth = mDepth;
 }
@@ -28,8 +27,6 @@ GLfloat RenderEngine::getMStartTime(){
 	return this->mStartTime;
 }
 
-=======
->>>>>>> parent of f4eea50... got render engine in own class
 void RenderEngine::initGL()
 {
 	glShadeModel(GL_SMOOTH);
@@ -58,8 +55,12 @@ void RenderEngine::setViewport(int width, int height)
 /**
  * Setup the projection matrix.
  */
-void RenderEngine::draw(GLfloat z, GLfloat rotation)
+void RenderEngine::draw()
 {
+	int z = mDepth;
+	GLfloat rotation = (maGetMilliSecondCount() - mStartTime) * -0.05f;
+
+
 	// Define quad vertices.
     GLfloat vertices[4][3];
     // Top right.

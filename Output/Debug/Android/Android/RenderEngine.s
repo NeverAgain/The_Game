@@ -141,7 +141,7 @@
 	.stabs	"GLsizeiptr:t(6,33)=(6,7)",128,0,73,0
 	.stabn	162,0,0,0
 	.stabn	162,0,0,0
-	.stabs	"RenderEngine:Tt(1,1)=s8mStartTime:/0(6,29),0,32;mDepth:/0(6,29),32,32;__base_ctor::(1,2)=#(1,1),(0,6),(1,3)=*(1,1),(0,6);:_ZN12RenderEngineC2Ev;2A.;__comp_ctor::(1,2):_ZN12RenderEngineC1Ev;2A.;setMDepth::(1,4)=#(1,1),(0,6),(1,3),(0,9),(0,6);:_ZN12RenderEngine9setMDepthEf;2A.;getMDepth::(1,5)=#(1,1),(0,9),(1,3),(0,6);:_ZN12RenderEngine9getMDepthEv;2A.;setMStartTime::(1,6)=#(1,1),(0,6),(1,3),(6,29),(0,6);:_ZN12RenderEngine13setMStartTimeEf;2A.;getMStartTime::(1,7)=#(1,1),(6,29),(1,3),(0,6);:_ZN12RenderEngine13getMStartTimeEv;2A.;initGL::(1,2):_ZN12RenderEngine6initGLEv;2A.;setViewport::(1,8)=#(1,1),(0,6),(1,3),(0,3),(0,3),(0,6);:_ZN12RenderEngine11setViewportEii;2A.;draw::(1,9)=#(1,1),(0,6),(1,3),(6,29),(6,29),(0,6);:_ZN12RenderEngine4drawEff;2A.;computeZoomFactor::(1,10)=#(1,1),(0,6),(1,3),(4,27),(0,6);:_ZN12RenderEngine17computeZoomFactorE9MAPoint2d;2A.;gluPerspective::(1,11)=#(1,1),(0,6),(1,3),(6,29),(6,29),(6,29),(6,29),(0,6);:_ZN12RenderEngine14gluPerspectiveEffff;2A.;operator=::(1,12)=#(1,1),(1,13)=&(1,1),(1,3),(1,14)=&(1,15)=k(1,1),(0,6);:_ZN12RenderEngineaSERKS_;2A.;__base_ctor::(1,16)=#(1,1),(0,6),(1,3),(1,14),(0,6);:_ZN12RenderEngineC2ERKS_;2A.;__comp_ctor::(1,16):_ZN12RenderEngineC1ERKS_;2A.;;",128,0,14,0
+	.stabs	"RenderEngine:Tt(1,1)=s8mStartTime:(6,29),0,32;mDepth:(6,29),32,32;__base_ctor::(1,2)=#(1,1),(0,6),(1,3)=*(1,1),(0,6);:_ZN12RenderEngineC2Ev;2A.;__comp_ctor::(1,2):_ZN12RenderEngineC1Ev;2A.;setMDepth::(1,4)=#(1,1),(0,6),(1,3),(0,9),(0,6);:_ZN12RenderEngine9setMDepthEf;2A.;getMDepth::(1,5)=#(1,1),(0,9),(1,3),(0,6);:_ZN12RenderEngine9getMDepthEv;2A.;setMStartTime::(1,6)=#(1,1),(0,6),(1,3),(6,29),(0,6);:_ZN12RenderEngine13setMStartTimeEf;2A.;getMStartTime::(1,7)=#(1,1),(6,29),(1,3),(0,6);:_ZN12RenderEngine13getMStartTimeEv;2A.;initGL::(1,2):_ZN12RenderEngine6initGLEv;2A.;setViewport::(1,8)=#(1,1),(0,6),(1,3),(0,3),(0,3),(0,6);:_ZN12RenderEngine11setViewportEii;2A.;draw::(1,2):_ZN12RenderEngine4drawEv;2A.;computeZoomFactor::(1,9)=#(1,1),(0,6),(1,3),(4,27),(0,6);:_ZN12RenderEngine17computeZoomFactorE9MAPoint2d;2A.;gluPerspective::(1,10)=#(1,1),(0,6),(1,3),(6,29),(6,29),(6,29),(6,29),(0,6);:_ZN12RenderEngine14gluPerspectiveEffff;2A.;operator=::(1,11)=#(1,1),(1,12)=&(1,1),(1,3),(1,13)=&(1,14)=k(1,1),(0,6);:_ZN12RenderEngineaSERKS_;2A.;__base_ctor::(1,15)=#(1,1),(0,6),(1,3),(1,13),(0,6);:_ZN12RenderEngineC2ERKS_;2A.;__comp_ctor::(1,15):_ZN12RenderEngineC1ERKS_;2A.;;",128,0,14,0
 	.stabn	162,0,0,0
 .code
 	.stabs	"_ZN12RenderEngineC2Ev:F(0,6)",36,0,10,__ZN12RenderEngineC2Ev
@@ -572,13 +572,11 @@ Ltext5:
 	pop  rt,fr
 	ret
 Lscope15:
-	.stabs	"_ZN12RenderEngine4drawEff:F(0,6)",36,0,59,__ZN12RenderEngine4drawEff
+	.stabs	"_ZN12RenderEngine4drawEv:F(0,6)",36,0,59,__ZN12RenderEngine4drawEv
 	.stabs	"this:p(0,25)",160,0,59,-12
-	.stabs	"z:p(6,29)",160,0,59,-16
-	.stabs	"rotation:p(6,29)",160,0,59,-20
-	.global	__ZN12RenderEngine4drawEff
+	.global	__ZN12RenderEngine4drawEv
 
-.func __ZN12RenderEngine4drawEff, 3, void
+.func __ZN12RenderEngine4drawEv, 1, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\RenderEngine.cpp",132,0,0,Ltext6
 Ltext6:
 	.line 59
@@ -587,75 +585,92 @@ Ltext6:
 	ld   fr,sp
 	add  fr,#0x44
 	ld   [fr,-12],i0
-	ld  [fr,-16],i1
-	ld  [fr,-20],i2
 	.dlab LBB18
 	.dlab LBB19
-	.line 63
+	.line 60
+	ld   r14,[fr,-12]
+	ld i0,[r14,4]
+	call &___fixsfsi
+	ld   [fr,-16],r14
+	.line 61
+	call &_maGetMilliSecondCount
+	ld   i0,r14
+	call &___floatsisf
+	ld   r0,[fr,-12]
+	ld i0,r14
+	ld i1,[r0]
+	call &___subsf3
+	ld i0,r14
+	ld i1,#0xbd4ccccd		; 2.1219957302e-314
+	call &___mulsf3
+	ld  [fr,-20],r14
+	.line 67
 	ld r14,#0x3f800000		; 1.63041663128e-322
 	ld  [fr,-68],r14
 	ld r14,#0x3f800000		; 1.63041663128e-322
 	ld  [fr,-64],r14
 	ld r14,#0x0		; 0
 	ld  [fr,-60],r14
-	.line 65
+	.line 69
 	ld r14,#0xbf800000		; 1.82804288961e-322
 	ld  [fr,-56],r14
 	ld r14,#0x3f800000		; 1.63041663128e-322
 	ld  [fr,-52],r14
 	ld r14,#0x0		; 0
 	ld  [fr,-48],r14
-	.line 67
+	.line 71
 	ld r14,#0x3f800000		; 1.63041663128e-322
 	ld  [fr,-44],r14
 	ld r14,#0xbf800000		; 1.82804288961e-322
 	ld  [fr,-40],r14
 	ld r14,#0x0		; 0
 	ld  [fr,-36],r14
-	.line 69
+	.line 73
 	ld r14,#0xbf800000		; 1.82804288961e-322
 	ld  [fr,-32],r14
 	ld r14,#0xbf800000		; 1.82804288961e-322
 	ld  [fr,-28],r14
 	ld r14,#0x0		; 0
 	ld  [fr,-24],r14
-	.line 72
+	.line 76
 	ld   i0,#0x1700
 	call &_glMatrixMode
-	.line 73
+	.line 77
 	call &_glLoadIdentity
-	.line 74
+	.line 78
 	ld i0,[fr,-20]
 	ld i1,#0x0		; 0
 	ld i2,#0x0		; 0
 	ld i3,#0x3f800000		; 1.63041663128e-322
 	call &_glRotatef
-	.line 75
+	.line 79
 	ld   r14,[fr,-16]
-	xor  r14,#0x80000000
+	neg r14,r14
+	ld   i0,r14
+	call &___floatsisf
 	ld i0,#0x0		; 0
 	ld i1,#0x0		; 0
 	ld i2,r14
 	call &_glTranslatef
-	.line 76
+	.line 80
 	ld i0,#0x3f4ccccd		; 4.94065645841e-324
 	ld i1,#0x3f666666		; 4.94065645841e-324
 	ld i2,#0x3f19999a		; 4.94065645841e-324
 	ld i3,#0x3f800000		; 1.63041663128e-322
 	call &_glClearColor
-	.line 77
+	.line 81
 	ld   i0,#0x4100
 	call &_glClear
-	.line 78
+	.line 82
 	ld   i0,#0x8074
 	call &_glEnableClientState
-	.line 79
+	.line 83
 	ld i0,#0x3f666666		; 4.94065645841e-324
 	ld i1,#0x0		; 0
 	ld i2,#0x0		; 0
 	ld i3,#0x3f800000		; 1.63041663128e-322
 	call &_glColor4f
-	.line 80
+	.line 84
 	ld   r14,fr
 	add  r14,#0xffffffbc
 	ld   i0,#0x3
@@ -663,25 +678,27 @@ Ltext6:
 	ld   i2,#0x0
 	ld   i3,r14
 	call &_glVertexPointer
-	.line 81
+	.line 85
 	ld   i0,#0x5
 	ld   i1,#0x0
 	ld   i2,#0x4
 	call &_glDrawArrays
-	.line 82
+	.line 86
 	ld   i0,#0x8074
 	call &_glDisableClientState
-	.line 83
+	.line 87
 	call &_glFinish
 	.dlab LBE19
 	.dlab LBE18
-	.line 84
+	.line 88
 	add  sp,#0x3c
 	pop  rt,fr
 	ret
-	.stabs	"vertices:(0,26)=ar(4,57);0;3;(0,27)=ar(4,57);0;2;(6,29)",128,0,61,-68
-	.stabn	192,0,0,LBB19-__ZN12RenderEngine4drawEff
-	.stabn	224,0,0,LBE19-__ZN12RenderEngine4drawEff
+	.stabs	"z:(0,3)",128,0,60,-16
+	.stabs	"rotation:(6,29)",128,0,61,-20
+	.stabs	"vertices:(0,26)=ar(4,57);0;3;(0,27)=ar(4,57);0;2;(6,29)",128,0,65,-68
+	.stabn	192,0,0,LBB19-__ZN12RenderEngine4drawEv
+	.stabn	224,0,0,LBE19-__ZN12RenderEngine4drawEv
 Lscope16:
 	.stabs	"glFinish:f(0,6)",36,0,277,_glFinish
 
@@ -1037,15 +1054,15 @@ Lscope25:
 	.stabn	192,0,0,LBB33-_glRotatef
 	.stabn	224,0,0,LBE33-_glRotatef
 Lscope26:
-	.stabs	"_ZN12RenderEngine17computeZoomFactorE9MAPoint2d:F(0,6)",36,0,91,__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
-	.stabs	"this:p(0,25)",160,0,91,-20
-	.stabs	"point:p(4,27)",160,0,91,-28
+	.stabs	"_ZN12RenderEngine17computeZoomFactorE9MAPoint2d:F(0,6)",36,0,95,__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
+	.stabs	"this:p(0,25)",160,0,95,-20
+	.stabs	"point:p(4,27)",160,0,95,-28
 	.global	__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
 
 .func __ZN12RenderEngine17computeZoomFactorE9MAPoint2d, 3, void
 	.stabs	"C:\\MoSync\\workspace\\The_Game\\RenderEngine.cpp",132,0,0,Ltext13
 Ltext13:
-	.line 91
+	.line 95
 	push rt,d1
 	sub  sp,#0x10
 	ld   fr,sp
@@ -1055,13 +1072,13 @@ Ltext13:
 	ld   [fr,-24],i2
 	.dlab LBB34
 	.dlab LBB35
-	.line 92
+	.line 96
 	call &_maGetScrSize
 	xh r14,r14
 	ld   i0,r14
 	call &___floatsisf
 	ld  [fr,-32],r14
-	.line 93
+	.line 97
 	ld   d1,[fr,-20]
 	ld i0,#0x41a00000		; 7.95445689804e-322
 	ld i1,[fr,-32]
@@ -1075,24 +1092,24 @@ Ltext13:
 	ld  [d1,4],r14
 	.dlab LBE35
 	.dlab LBE34
-	.line 94
+	.line 98
 	add  sp,#0x10
 	pop  rt,d1
 	ret
-	.stabs	"screenHeight:(0,9)",128,0,92,-32
+	.stabs	"screenHeight:(0,9)",128,0,96,-32
 	.stabn	192,0,0,LBB35-__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
 	.stabn	224,0,0,LBE35-__ZN12RenderEngine17computeZoomFactorE9MAPoint2d
 Lscope27:
-	.stabs	"_ZN12RenderEngine14gluPerspectiveEffff:F(0,6)",36,0,101,__ZN12RenderEngine14gluPerspectiveEffff
-	.stabs	"this:p(0,25)",160,0,101,-20
-	.stabs	"fovy:p(6,29)",160,0,101,-24
-	.stabs	"aspect:p(6,29)",160,0,101,-28
-	.stabs	"zNear:p(6,29)",160,0,101,-32
-	.stabs	"zFar:p(6,29)",160,0,101,0
+	.stabs	"_ZN12RenderEngine14gluPerspectiveEffff:F(0,6)",36,0,105,__ZN12RenderEngine14gluPerspectiveEffff
+	.stabs	"this:p(0,25)",160,0,105,-20
+	.stabs	"fovy:p(6,29)",160,0,105,-24
+	.stabs	"aspect:p(6,29)",160,0,105,-28
+	.stabs	"zNear:p(6,29)",160,0,105,-32
+	.stabs	"zFar:p(6,29)",160,0,105,0
 	.global	__ZN12RenderEngine14gluPerspectiveEffff
 
 .func __ZN12RenderEngine14gluPerspectiveEffff, 5, void
-	.line 101
+	.line 105
 	push rt,d1
 	sub  sp,#0x2c
 	ld   fr,sp
@@ -1103,10 +1120,10 @@ Lscope27:
 	ld  [fr,-32],i3
 	.dlab LBB36
 	.dlab LBB37
-	.line 102
+	.line 106
 	ld r14,#0x40490fd0		; 3.21142669797e-322
 	ld  [fr,-36],r14
-	.line 104
+	.line 108
 	ld i0,[fr,-32]
 	call &___extendsfdf2
 	ld d0,r14
@@ -1133,21 +1150,21 @@ Lscope27:
 	ld i1,r15 ;1
 	call &___truncdfsf2
 	ld  [fr,-40],r14
-	.line 105
+	.line 109
 	ld   r14,[fr,-40]
 	xor  r14,#0x80000000
 	ld  [fr,-44],r14
-	.line 106
+	.line 110
 	ld i0,[fr,-44]
 	ld i1,[fr,-28]
 	call &___mulsf3
 	ld  [fr,-48],r14
-	.line 107
+	.line 111
 	ld i0,[fr,-40]
 	ld i1,[fr,-28]
 	call &___mulsf3
 	ld  [fr,-52],r14
-	.line 109
+	.line 113
 	ld r14,[fr,-32]
 	ld  [sp],r14
 	ld r14,[fr]
@@ -1159,15 +1176,15 @@ Lscope27:
 	call &_glFrustumf
 	.dlab LBE37
 	.dlab LBE36
-	.line 110
+	.line 114
 	add  sp,#0x2c
 	pop  rt,d1
 	ret
-	.stabs	"M_PI:(0,30)=k(0,9)",128,0,102,-36
-	.stabs	"ymax:(6,29)",128,0,104,-40
-	.stabs	"ymin:(6,29)",128,0,105,-44
-	.stabs	"xmin:(6,29)",128,0,106,-48
-	.stabs	"xmax:(6,29)",128,0,107,-52
+	.stabs	"M_PI:(0,30)=k(0,9)",128,0,106,-36
+	.stabs	"ymax:(6,29)",128,0,108,-40
+	.stabs	"ymin:(6,29)",128,0,109,-44
+	.stabs	"xmin:(6,29)",128,0,110,-48
+	.stabs	"xmax:(6,29)",128,0,111,-52
 	.stabn	192,0,0,LBB37-__ZN12RenderEngine14gluPerspectiveEffff
 	.stabn	224,0,0,LBE37-__ZN12RenderEngine14gluPerspectiveEffff
 Lscope28:

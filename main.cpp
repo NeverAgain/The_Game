@@ -31,12 +31,8 @@ public:
 	 * Initialize rendering parameters.
 	 */
 	MyGLMoblet() :
-		GLMoblet(GLMoblet::GL1),
-		mDepth(5.0f),
-		mStartTime(maGetMilliSecondCount())
+		GLMoblet(GLMoblet::GL1)
 	{
-<<<<<<< HEAD
-
 		gameWorld = new GameWorld();
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
 
@@ -50,8 +46,6 @@ public:
 		renderEngine->setMDepth(5.0f);
 		renderEngine->setMStartTime(maGetMilliSecondCount());
 
-=======
->>>>>>> parent of f4eea50... got render engine in own class
 	}
 
 	// ================== Event methods ==================
@@ -83,11 +77,8 @@ public:
 	 */
 	void draw()
 	{
-		// Compute rotation.
-		GLfloat rotation = (maGetMilliSecondCount() - renderEngine->mStartTime) * -0.05f;
 
-		// Render scene.
-		renderEngine->draw(renderEngine->mDepth, rotation);
+		renderEngine->draw();
 	}
 
 	/**
@@ -98,6 +89,7 @@ public:
 		if (MAK_BACK == keyCode || MAK_0 == keyCode)
 		{
 			// Call close to exit the application.
+			renderEngine = 0;
 			close();
 		}
 	}
