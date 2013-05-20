@@ -12,7 +12,7 @@ GameWorld::GameWorld(){
 };
 
 GameWorld::~GameWorld(){
-
+	gameObjList.clear();
 };
 
 void GameWorld::runTimerEvent(){
@@ -20,13 +20,25 @@ void GameWorld::runTimerEvent(){
 	//printf(Convert::toString(gameObjList->size()).c_str());
 
 	//requires more than one object in list to iterate through
-	List<GameObj*>::ListIterator iterator = gameObjList.begin();
+	//List<GameObj*>::ListIterator iterator = gameObjList.begin();
 
-	while(iterator.hasNext()){
-		iterator.next()->update();
+	for(	HashMap<String, GameObj*>::Iterator iterator = gameObjList.begin();
+			iterator != gameObjList.end();
+			iterator++){
+		iterator->second->update();
 	}
+
 };
 
+void GameWorld::removeGameObj(GameObj *rmObj){
+	gameObjList.erase(rmObj->getName());
+	delete rmObj;
+}
+
 void GameWorld::addGameObj(GameObj *addObj){
-	gameObjList.addLast(addObj);
+	gameObjList.insert(addObj->getName(),addObj);
+}
+
+void GameWorld::getGameObj(GameObj *getObj){
+	gameObjList.find(getObj->getName());
 }

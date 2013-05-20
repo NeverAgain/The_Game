@@ -2,6 +2,7 @@
 #include "RenderEngine.h"
 #include "Player.h"
 
+#include <ma.h>
 #include <maapi.h>
 #include <mastdlib.h>
 #include <mavsprintf.h>
@@ -19,7 +20,7 @@ using namespace MAUtil;
  * The template program draws a rotating quad. Touch the
  * screen to change the depth coordinate.
  */
-class MyGLMoblet : public GLMoblet
+class MyGLMoblet : public GLMoblet, FocusListener
 {
 public:
 	GameWorld* gameWorld;
@@ -36,15 +37,17 @@ public:
 		gameWorld = new GameWorld();
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
 
-		Player *player1 = new Player(1,0);
-		Player *player2 = new Player(2,0);
+		Player *player1 = new Player("player1",1,0);
+		Player *player2 = new Player("here",2,0);
 		gameWorld->addGameObj(player1);
 		gameWorld->addGameObj(player2);
-
 
 		renderEngine = new RenderEngine();
 		renderEngine->setMDepth(5.0f);
 		renderEngine->setMStartTime(maGetMilliSecondCount());
+
+
+		Environment::getEnvironment().addFocusListener(this);
 
 	}
 
@@ -65,9 +68,18 @@ public:
 
 		// Initialize OpenGL.
 		renderEngine->initGL();
+		renderEngine->enableRenderEngine();
 
 		// Call draw 60 times per second.
 		setPreferredFramesPerSecond(60);
+	}
+
+	void focusLost(){
+		renderEngine->disableRenderEngine();
+	}
+
+	void focusGained(){
+		renderEngine->enableRenderEngine();
 	}
 
 	/**
@@ -77,8 +89,9 @@ public:
 	 */
 	void draw()
 	{
-
-		renderEngine->draw();
+		if(renderEngine->getIfEnable()){
+			renderEngine->draw();
+		}
 	}
 
 	/**
@@ -86,10 +99,15 @@ public:
 	 */
 	void keyPressEvent(int keyCode, int nativeCode)
 	{
+		lprintfln("LOG key press keyCode %d nativeCode %d",keyCode,nativeCode);
+
 		if (MAK_BACK == keyCode || MAK_0 == keyCode)
 		{
 			// Call close to exit the application.
-			renderEngine = 0;
+			//renderEngine = 0;
+
+			delete gameWorld;
+			delete renderEngine;
 			close();
 		}
 	}
@@ -118,6 +136,9 @@ public:
  */
 extern "C" int MAMain()
 {
-	Moblet::run(new MyGLMoblet);
+	MyGLMoblet *game = new MyGLMoblet();
+	Moblet::run(game);
+
+	delete game;
 	return 0;
 }

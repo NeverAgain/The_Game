@@ -11,6 +11,18 @@ RenderEngine::RenderEngine()
 
 }
 
+void RenderEngine::enableRenderEngine(){
+	enable = true;
+}
+
+void RenderEngine::disableRenderEngine(){
+	enable = false;
+}
+
+bool RenderEngine::getIfEnable(){
+	return enable;
+}
+
 void RenderEngine::setMDepth(float mDepth){
 	this->mDepth = mDepth;
 }

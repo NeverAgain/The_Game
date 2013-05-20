@@ -7,10 +7,8 @@
 
 #include "Player.h";
 
-Player::Player(int px, int py):GameObj(px,py){
+Player::Player(String objName, int px, int py):GameObj(objName,px,py){
 	state = STAND;
-	x = px;
-	y = py;
 }
 
 
@@ -23,5 +21,7 @@ void GameObj::update(){
 	//x = 3;
 	//lprintfln("player Event fired");
 
-	lprintfln(("LOG "+Convert::toString(x)).c_str());
+	//lprintfln(("LOG "+this->name).c_str());
+	//lprintfln("LOG %d",this->x);
+	//lprintfln("LOG %s",this->name.c_str());
 }

@@ -15,6 +15,9 @@ class RenderEngine
 	public :
 		RenderEngine();
 
+		void enableRenderEngine();
+		void disableRenderEngine();
+		bool getIfEnable();
 
 		void setMDepth(float mDepth);
 		float getMDepth();
@@ -30,6 +33,9 @@ class RenderEngine
 		void draw();
 		void computeZoomFactor(MAPoint2d point);
 		void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
+
+	private:
+		bool enable;
 
 };
 

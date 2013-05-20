@@ -11,7 +11,12 @@
 
 #include <MAUtil/Environment.h>
 #include <MAUtil/List.h>
+#include <MAUtil/Hashmap.h>
+#include <MAUtil/HashDict.h>
+#include <MAUtil/String.h>
+#include <MAUtil/Dictionary.h>
 #include <conprint.h>
+
 #include "GameObj.h"
 
 using namespace MAUtil;
@@ -19,16 +24,18 @@ using namespace MAUtil;
 class GameWorld : public TimerListener {
 //class GameWorld {
 	public:
-		int test;
+
 		GameWorld();
 		~GameWorld();
 		void propegateObjs();
 		void runTimerEvent();
 		void addGameObj(GameObj *addObj);
-		void removeGameObj(GameObj rmObj);
+		void removeGameObj(GameObj *rmObj);
+		void getGameObj(GameObj*getObj);
 
 	private:
-		List<GameObj*> gameObjList;
+		HashMap<String,GameObj*>gameObjList;
+		//List<GameObj*> gameObjList;
 
 };
 

@@ -8,6 +8,10 @@
 #ifndef GAMEOBJ_H_
 #define GAMEOBJ_H_
 
+#include <MAUtil/String.h>
+
+using namespace MAUtil;
+
 class GameObj{
 	enum Direction{
 		UP,
@@ -23,9 +27,10 @@ class GameObj{
 		int height;					//height of obj(for image)
 		int state;
 		int direction;
+		String name;
 
 	public:
-		GameObj(int px, int py);
+		GameObj(String objName, int px, int py);
 
 		//Direction getDirection();
 		//void setDirection(Direction direction);
@@ -42,8 +47,10 @@ class GameObj{
 		int getY() const;
 		void setY(int y);
 
-		virtual void update();
+		String getName() const;
+		void setName(String name);
 
+		virtual void update();
 };
 
 

@@ -21,7 +21,7 @@ class Player: public GameObj{
 	};
 
 	public:
-		Player(int px, int py);
+		Player(String objName, int px, int py);
 		~Player();
 	private:
 };
