@@ -33,6 +33,9 @@ class GameWorld : public TimerListener {
 		void removeGameObj(GameObj *rmObj);
 		void getGameObj(GameObj*getObj);
 
+		HashMap<String,GameObj*>* getGameObjListRef();
+
+
 	private:
 		HashMap<String,GameObj*>gameObjList;
 		//List<GameObj*> gameObjList;

@@ -10,7 +10,7 @@
 
 #include <conprint.h>
 #include "GameObj.h"
-#include "Convert/Convert.h"
+#include "../Convert/Convert.h"
 
 class Player: public GameObj{
 	enum PlayerState{
@@ -21,7 +21,7 @@ class Player: public GameObj{
 	};
 
 	public:
-		Player(String objName, int px, int py);
+		Player(String objName, int px, int py,HashMap<String,GameObj*> *gmObjList);
 		~Player();
 	private:
 };

@@ -7,7 +7,7 @@
 
 #include "Player.h";
 
-Player::Player(String objName, int px, int py):GameObj(objName,px,py){
+Player::Player(String objName, int px, int py, HashMap<String,GameObj*>* gmObjList):GameObj(objName,px,py,gmObjList){
 	state = STAND;
 }
 
@@ -24,4 +24,12 @@ void GameObj::update(){
 	//lprintfln(("LOG "+this->name).c_str());
 	//lprintfln("LOG %d",this->x);
 	//lprintfln("LOG %s",this->name.c_str());
+
+	/*
+	Player *test;
+	if(this->name == "player1"){
+		test = (Player*)(this->gameObjList->find("player2")->second);
+		lprintfln("LOG I am %s printing %s from the other player",this->name.c_str(),test->name.c_str());
+	}
+	*/
 }
