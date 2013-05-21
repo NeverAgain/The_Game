@@ -21,7 +21,7 @@ class Player: public GameObj{
 	};
 
 	public:
-		Player(String objName, int px, int py);
+		Player(String objName, int px, int py,HashMap<String,GameObj*> *gmObjList);
 		~Player();
 	private:
 };

@@ -7,8 +7,9 @@
 
 #include "GameObj.h";
 
-//GameObj::GameObj(String objName, int px, int py, GameWorld gmWorld):name(objName),x(px),y(py),gameWorld(gmWorld){}
-GameObj::GameObj(String objName, int px, int py):name(objName),x(px),y(py){}
+
+GameObj::GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gmObjList):name(objName),x(px),y(py),gameObjList(gmObjList){}
+GameObj::~GameObj(){}
 
 //Direction GameObj::getDirection() { return direction;	}
 //void GameObj::setDirection(Direction direction) { this->direction = direction;	}
@@ -27,3 +28,9 @@ void GameObj::setWidth(int width) {	this->width = width;}
 
 String GameObj::getName() const {	return name;	}
 void GameObj::setName(String name) {this->name = name;}
+
+/*
+void GameObj::addGameObjList(HashMap<String,GameObj*> *gmObjList){
+	gameObjList = gmObjList;
+}
+*/

@@ -9,6 +9,7 @@
 #define GAMEOBJ_H_
 
 #include <MAUtil/String.h>
+#include <MAUtil/Hashmap.h>
 
 using namespace MAUtil;
 
@@ -28,13 +29,14 @@ class GameObj{
 		int state;
 		int direction;
 		String name;
+		HashMap<String,GameObj*> *gameObjList;
 
 		GameObj interactObject;
 
 	public:
 
-		//GameObj(String objName, int px, int py, GameWorld gmWorld);
-		GameObj(String objName, int px, int py);
+		GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gameObjList);
+		~GameObj();
 
 		//Direction getDirection();
 		//void setDirection(Direction direction);
@@ -53,6 +55,8 @@ class GameObj{
 
 		String getName() const;
 		void setName(String name);
+
+		//void addGameObjList(HashMap<String,GameObj*> *gmObjList);
 
 		virtual void update();
 };

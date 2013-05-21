@@ -13,6 +13,7 @@ GameWorld::GameWorld(){
 
 GameWorld::~GameWorld(){
 	gameObjList.clear();
+	delete &gameObjList;
 };
 
 GameWorldState GameWorld::checkGameWorldState(){
@@ -26,6 +27,10 @@ void GameWorld::runTimerEvent(){
 		iterator->second->update();
 	}
 };
+
+HashMap<String,GameObj*>* GameWorld::getGameObjListRef(){
+	return &gameObjList;
+}
 
 void GameWorld::removeGameObj(GameObj *rmObj){
 	gameObjList.erase(rmObj->getName());
