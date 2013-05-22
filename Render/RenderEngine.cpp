@@ -6,9 +6,9 @@
  */
 #include "RenderEngine.h"
 
-RenderEngine::RenderEngine()
+RenderEngine::RenderEngine(GameWorld *gmWorldRef)
 {
-
+	gameWorldRef = gmWorldRef;
 }
 
 void RenderEngine::enableRenderEngine(){
