@@ -10,8 +10,8 @@
 GameObj::GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gmObjList):name(objName),x(px),y(py),gameObjList(gmObjList){}
 GameObj::~GameObj(){}
 
-//Direction GameObj::getDirection() { return direction;	}
-//void GameObj::setDirection(Direction direction) { this->direction = direction;	}
+GameObj::Direction GameObj::getDirection() { return direction;	}
+void GameObj::setDirection(Direction direction) { this->direction = direction;	}
 
 int GameObj::getX() const {	return x;	}
 void GameObj::setX(int x) {	this->x = x;}

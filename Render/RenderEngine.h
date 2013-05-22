@@ -6,6 +6,7 @@
  */
 
 #include <GLES/gl.h>
+#include "../Logic/GameWorld.h"
 
 #ifndef RENDERENGINE_H_
 #define RENDERENGINE_H_
@@ -13,7 +14,7 @@
 class RenderEngine
 {
 	public :
-		RenderEngine();
+		RenderEngine(GameWorld *gameWorld);
 
 		void enableRenderEngine();
 		void disableRenderEngine();
@@ -36,6 +37,7 @@ class RenderEngine
 
 	private:
 		bool enable;
+		GameWorld *gameWorldRef;
 
 };
 

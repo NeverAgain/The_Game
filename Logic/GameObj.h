@@ -27,7 +27,7 @@ class GameObj{
 		int width;					//width of obj(for image)
 		int height;					//height of obj(for image)
 		int state;
-		int direction;
+		GameObj::Direction direction;
 		String name;
 		HashMap<String,GameObj*> *gameObjList;
 
@@ -35,8 +35,8 @@ class GameObj{
 		GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gameObjList);
 		~GameObj();
 
-		//Direction getDirection();
-		//void setDirection(Direction direction);
+		GameObj::Direction getDirection();
+		void setDirection(Direction direction);
 
 		int getHeight() const;
 		void setHeight(int height);

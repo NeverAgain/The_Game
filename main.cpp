@@ -42,7 +42,7 @@ public:
 		gameWorld->addGameObj(player1);
 		gameWorld->addGameObj(player2);
 
-		renderEngine = new RenderEngine();
+		renderEngine = new RenderEngine(gameWorld);
 		renderEngine->setMDepth(5.0f);
 		renderEngine->setMStartTime(maGetMilliSecondCount());
 
@@ -59,10 +59,11 @@ public:
 	 */
 	void init()
 	{
-		gameWorld = new GameWorld();
-		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
 
-		renderEngine = new RenderEngine();
+		//gameWorld = new GameWorld();
+		//addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
+
+		//renderEngine = new RenderEngine();
 		// Set the GL viewport to be the entire MoSync screen.
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
