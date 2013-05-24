@@ -9,11 +9,12 @@
 #define ANIMATIONDATA_H_
 
 #include <MAUI/Image.h>
+#include "maapi.h"
 
 class AnimationData
 {
 	private:
-		Image* displayImage;
+		MAHandle displayImage;
 
 		int currentFrame;
 		int numOfFrame;
@@ -27,9 +28,12 @@ class AnimationData
 		int rows;
 		int columns;
 
+
 	public:
-		AnimationData(int sheetWidth, int sheetHeight, int rows, int columns);
+		AnimationData(MAHandle image, int rows=1, int columns=1);
 		~AnimationData();
+
+		void update();
 };
 
 
