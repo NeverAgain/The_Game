@@ -10,7 +10,7 @@
 
 #include <conprint.h>
 #include "GameObj.h"
-#include "Convert/Convert.h"
+#include "../Convert/Convert.h"
 
 class Player: public GameObj{
 	enum PlayerState{

@@ -7,6 +7,7 @@
 
 #include "GameObj.h";
 
+//GameObj::GameObj(String objName, int px, int py, GameWorld gmWorld):name(objName),x(px),y(py),gameWorld(gmWorld){}
 GameObj::GameObj(String objName, int px, int py):name(objName),x(px),y(py){}
 
 //Direction GameObj::getDirection() { return direction;	}

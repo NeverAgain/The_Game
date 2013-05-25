@@ -29,7 +29,11 @@ class GameObj{
 		int direction;
 		String name;
 
+		GameObj interactObject;
+
 	public:
+
+		//GameObj(String objName, int px, int py, GameWorld gmWorld);
 		GameObj(String objName, int px, int py);
 
 		//Direction getDirection();

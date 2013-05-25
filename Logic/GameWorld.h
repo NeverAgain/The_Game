@@ -22,11 +22,18 @@
 using namespace MAUtil;
 
 class GameWorld : public TimerListener {
-//class GameWorld {
-	public:
 
+	enum GameWorldState {
+		RUN,
+		PAUSE
+	};
+
+	public:
 		GameWorld();
 		~GameWorld();
+
+		GameWorldState checkGameWorldState();
+
 		void propegateObjs();
 		void runTimerEvent();
 		void addGameObj(GameObj *addObj);
@@ -35,6 +42,7 @@ class GameWorld : public TimerListener {
 
 	private:
 		HashMap<String,GameObj*>gameObjList;
+		GameWorldState gameWorldState;
 		//List<GameObj*> gameObjList;
 
 };

@@ -1,6 +1,7 @@
-#include "GameWorld.h"
-#include "RenderEngine.h"
-#include "Player.h"
+#include "Logic/GameWorld.h"
+#include "Logic/Player.h"
+#include "Render/RenderEngine.h"
+
 
 #include <ma.h>
 #include <maapi.h>
@@ -38,7 +39,7 @@ public:
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
 
 		Player *player1 = new Player("player1",1,0);
-		Player *player2 = new Player("here",2,0);
+		Player *player2 = new Player("player2",2,0);
 		gameWorld->addGameObj(player1);
 		gameWorld->addGameObj(player2);
 
