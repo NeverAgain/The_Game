@@ -10,16 +10,10 @@
 
 #include <MAUtil/String.h>
 #include <MAUtil/Hashmap.h>
-
+#include "State.h"
 using namespace MAUtil;
 
 class GameObj{
-	enum Direction{
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
-	};
 
 	protected:
 		int x;						//x position

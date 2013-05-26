@@ -11,14 +11,9 @@
 #include <conprint.h>
 #include "GameObj.h"
 #include "../Convert/Convert.h"
+#include "State.h"
 
 class Player: public GameObj{
-	enum PlayerState{
-		STAND,
-		MOVE,
-		ATTACK,
-		COUNTER
-	};
 
 	public:
 		Player(String objName, int px, int py,HashMap<String,GameObj*> *gmObjList);
