@@ -1,6 +1,8 @@
 #include "Logic/GameWorld.h"
 #include "Render/RenderEngine.h"
 #include "Logic/Player.h"
+#include "Render/AnimationData.h"
+
 
 #include <ma.h>
 #include <maapi.h>
@@ -9,7 +11,7 @@
 #include <MAUtil/Moblet.h>
 #include <MAUtil/GLMoblet.h>
 #include <GLES/gl.h>
-
+#include "MAHeaders.h"
 
 using namespace MAUtil;
 
@@ -66,6 +68,8 @@ public:
 		//renderEngine = new RenderEngine();
 		// Set the GL viewport to be the entire MoSync screen.
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
+
+		AnimationData *data = new AnimationData(R_TEST,1,1);
 
 		// Initialize OpenGL.
 		renderEngine->initGL();
