@@ -8,13 +8,14 @@
 #ifndef ANIMATIONDATA_H_
 #define ANIMATIONDATA_H_
 
+#include <conprint.h>
 #include <MAUI/Image.h>
 #include "maapi.h"
 
 class AnimationData
 {
 	private:
-		MAHandle displayImage;
+		MAHandle image;
 
 		int currentFrame;
 		int numOfFrame;
@@ -28,9 +29,14 @@ class AnimationData
 		int rows;
 		int columns;
 
+		MARect frameRect;
+
+		int imagePixelWidth;
+		int imagePixelHeight;
+
 
 	public:
-		AnimationData(MAHandle image, int rows=1, int columns=1);
+		AnimationData(MAHandle image, int rows, int columns);
 		~AnimationData();
 
 		void update();
