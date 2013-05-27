@@ -5,7 +5,8 @@
  *      Author: Samuel
  */
 
-#include "Player.h";
+#include "Player.h"
+
 
 Player::Player(String objName, int px, int py, HashMap<String,GameObj*>* gmObjList):GameObj(objName,px,py,gmObjList){
 	state = STAND;

@@ -15,6 +15,12 @@
 
 class Player: public GameObj{
 
+	enum PlayerState {
+		ATTACK,
+		MOVE,
+		STAND
+	};
+
 	public:
 		Player(String objName, int px, int py,HashMap<String,GameObj*> *gmObjList);
 		~Player();
