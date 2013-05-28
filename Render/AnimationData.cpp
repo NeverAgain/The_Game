@@ -40,3 +40,19 @@ void AnimationData::update(){
 	//or
 	//int maCreateImageRaw	(MAHandle placeholder,const void * src,MAExtent size, int alpha)
 }
+
+int AnimationData::getXDrawPos() const {
+	return xDrawPos;
+}
+
+void AnimationData::setXDrawPos(int xDrawPos) {
+	this->xDrawPos = xDrawPos;
+}
+
+int AnimationData::getYDrawPos() const {
+	return yDrawPos;
+}
+
+void AnimationData::setYDrawPos(int yDrawPos) {
+	this->yDrawPos = ydrawPos;
+}
