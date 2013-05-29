@@ -34,12 +34,19 @@ class AnimationData
 		int imagePixelWidth;
 		int imagePixelHeight;
 
+		int xDrawPos;
+		int yDrawPos;
 
 	public:
 		AnimationData(MAHandle image, int rows, int columns);
 		~AnimationData();
 
 		void update();
+		int getXDrawPos() const;
+		void setXDrawPos(int xDrawPos);
+
+		int getYDrawPos() const;
+		void setYDrawPos(int yDrawPos);
 };
 
 
