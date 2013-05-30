@@ -1,3 +1,4 @@
 <resources>
 	<image id="R_TEST" resource="Resource/computer_look_back.png"/>
+	<image id="R_BASIC" resource="Resource/basic.png"/>
 </resources>

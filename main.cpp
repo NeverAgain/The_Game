@@ -28,6 +28,8 @@ public:
 	GameWorld* gameWorld;
 	RenderEngine* renderEngine;
 
+	AnimationData *data;
+
 
 	// ================== Constructor ==================
 	/**
@@ -69,7 +71,8 @@ public:
 		// Set the GL viewport to be the entire MoSync screen.
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
-		AnimationData *data = new AnimationData(R_TEST,1,1);
+		//AnimationData *data = new AnimationData(R_BASIC,1,1);
+		data = new AnimationData(R_BASIC,1,1);
 
 		// Initialize OpenGL.
 		renderEngine->initGL();
@@ -96,6 +99,7 @@ public:
 	{
 		if(renderEngine->getIfEnable()){
 			renderEngine->draw();
+			data->update();
 		}
 	}
 

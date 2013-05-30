@@ -16,6 +16,8 @@ class AnimationData
 {
 	private:
 		MAHandle image;
+		MAHandle *imageBuffer;
+
 
 		int currentFrame;
 		int numOfFrame;
