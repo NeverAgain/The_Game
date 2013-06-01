@@ -16,35 +16,33 @@ AnimationData::AnimationData(MAHandle image, int rows=1, int columns=1) : image(
 	spriteWidth = imagePixelWidth/columns;
 	spriteHeight = imagePixelHeight/rows;
 
-	//lprintfln("LOG spriteWIDTH %d",spriteWidth);
+	frameRect.width = spriteWidth;
+	frameRect.height = spriteHeight;
 
-	numOfFrame = rows*columns;
+	numOfFrames = rows*columns;
 	currentFrame = 0;
 
-
-	MARect frameRect = {0, 0, 3, 1};
-	imageBuffer = new int[imagePixelWidth*imagePixelHeight];
-	maGetImageData(image,imageBuffer,&frameRect,imagePixelWidth);
-
+	currentRow = 0;
+	currentColumn = 0;
 }
 
 AnimationData::~AnimationData(){}
 
 void AnimationData::update(){
-	//TODO should use
-	//void maGetImageData	(MAHandle image,void * dst, const MARect * srcRect,int scanlength)
-	//MAHandle *dataSrc = new int[imagePixelWidth*imagePixelHeight];
+	currentFrame = (int) (currentFrame + 1);
 
-	lprintfln("LOG test RED %x, GREEN %x, BLUE %x",imageBuffer[0],imageBuffer[1],imageBuffer[2]);
+	if(currentFrame >= numOfFrames){
+		currentFrame = 0;
+	}
 
-	MAHandle *getImage;
-	//MARect r = {0, 0, spriteWidth, spriteHeight};
-	//int test = maCreateImageFromData(getImage, dataSrc,0,maGetDataSize(dataSrc));
+	currentRow = ((int)currentFrame / columns);
+	currentColumn = ((int)currentFrame % columns);
 
-	//TODO consider
-	//int maCreateImageFromData	(MAHandle placeholder,MAHandle data,int offset,int size)
-	//or
-	//int maCreateImageRaw	(MAHandle placeholder,const void * src,MAExtent size, int alpha)
+	frameRect.left = currentColumn*spriteWidth;
+	frameRect.top = currentRow*spriteHeight;
+
+	lprintfln("LOG frame left %d, top %d, width %d, height %d",frameRect.left,frameRect.top,frameRect.width,frameRect.height);
+	//lprintfln("LOG rows %d, columns %d, currentFrame %d", currentRow, currentColumn,currentFrame);
 }
 
 int AnimationData::getXDrawPos() const {
