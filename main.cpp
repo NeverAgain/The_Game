@@ -72,7 +72,7 @@ public:
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
 		//AnimationData *data = new AnimationData(R_BASIC,1,1);
-		data = new AnimationData(R_BASIC,1,1);
+		data = new AnimationData(R_TEST,5,5);
 
 		// Initialize OpenGL.
 		renderEngine->initGL();

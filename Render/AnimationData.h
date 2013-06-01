@@ -20,7 +20,7 @@ class AnimationData
 
 
 		int currentFrame;
-		int numOfFrame;
+		int numOfFrames;
 
 		int sheetWidth;
 		int sheetHeight;
@@ -30,6 +30,9 @@ class AnimationData
 
 		int rows;
 		int columns;
+
+		int currentRow;
+		int currentColumn;
 
 		MARect frameRect;
 
