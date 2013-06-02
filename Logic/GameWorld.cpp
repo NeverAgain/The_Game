@@ -16,9 +16,9 @@ GameWorld::~GameWorld(){
 	delete &gameObjList;
 };
 
-GameWorldState GameWorld::checkGameWorldState(){
+GameWorld::GameWorldState GameWorld::checkGameWorldState(){
 	return gameWorldState;
-}
+};
 
 void GameWorld::runTimerEvent(){
 	for(	HashMap<String, GameObj*>::Iterator iterator = gameObjList.begin();
