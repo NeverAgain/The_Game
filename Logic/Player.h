@@ -11,13 +11,14 @@
 #include <conprint.h>
 #include "GameObj.h"
 #include "../Convert/Convert.h"
+#include "State.h"
 
 class Player: public GameObj{
-	enum PlayerState{
-		STAND,
-		MOVE,
+
+	enum PlayerState {
 		ATTACK,
-		COUNTER
+		MOVE,
+		STAND
 	};
 
 	public:
