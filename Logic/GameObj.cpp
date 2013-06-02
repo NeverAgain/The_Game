@@ -7,7 +7,6 @@
 
 #include "GameObj.h";
 
-
 GameObj::GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gmObjList):name(objName),x(px),y(py),gameObjList(gmObjList){}
 GameObj::~GameObj(){}
 

@@ -32,7 +32,6 @@ class GameObj{
 		HashMap<String,GameObj*> *gameObjList;
 
 	public:
-
 		GameObj(String objName, int px, int py, HashMap<String,GameObj*> *gameObjList);
 		~GameObj();
 

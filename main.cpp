@@ -44,7 +44,10 @@ public:
 
 		Player *player1 = new Player("player1",1,0,gameWorld->getGameObjListRef());
 		Player *player2 = new Player("player2",2,0,gameWorld->getGameObjListRef());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 94ee8161ec505516db9c1b6eeecd00c61bae2ee2
 		gameWorld->addGameObj(player1);
 		gameWorld->addGameObj(player2);
 
