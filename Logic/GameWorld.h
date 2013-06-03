@@ -32,7 +32,8 @@ class GameWorld : public TimerListener {
 		GameWorld();
 		~GameWorld();
 
-		GameWorldState checkGameWorldState();
+		GameWorldState getGameWorldState();
+		void setGameWorldState(GameWorldState state);
 
 		void propegateObjs();
 		void runTimerEvent();

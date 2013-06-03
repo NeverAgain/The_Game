@@ -14,11 +14,21 @@
 class RenderEngine
 {
 	public :
+		enum RenderEngineState {
+			RUN,
+			PAUSE
+		};
+
+
 		RenderEngine(GameWorld *gameWorld);
+		~RenderEngine();
 
 		void enableRenderEngine();
 		void disableRenderEngine();
 		bool getIfEnable();
+
+		RenderEngineState getRenderEngineState();
+		void setRenderEngineState(RenderEngineState state);
 
 		void setMDepth(float mDepth);
 		float getMDepth();
@@ -38,6 +48,7 @@ class RenderEngine
 	private:
 		bool enable;
 		GameWorld *gameWorldRef;
+		RenderEngineState renderEngineState;
 
 };
 

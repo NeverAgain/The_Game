@@ -1,7 +1,6 @@
 #include "Logic/GameWorld.h"
-
-#include "Render/RenderEngine.h"
 #include "Logic/Player.h"
+#include "Render/RenderEngine.h"
 #include "Render/AnimationData.h"
 
 
@@ -51,7 +50,6 @@ public:
 		renderEngine = new RenderEngine(gameWorld);
 		renderEngine->setMDepth(5.0f);
 		renderEngine->setMStartTime(maGetMilliSecondCount());
-
 
 		Environment::getEnvironment().addFocusListener(this);
 
@@ -110,8 +108,6 @@ public:
 	 */
 	void keyPressEvent(int keyCode, int nativeCode)
 	{
-		lprintfln("LOG key press keyCode %d nativeCode %d",keyCode,nativeCode);
-
 		if (MAK_BACK == keyCode || MAK_0 == keyCode)
 		{
 			// Call close to exit the application.

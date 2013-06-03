@@ -41,7 +41,7 @@ void AnimationData::update(){
 	frameRect.left = currentColumn*spriteWidth;
 	frameRect.top = currentRow*spriteHeight;
 
-	lprintfln("LOG frame left %d, top %d, width %d, height %d",frameRect.left,frameRect.top,frameRect.width,frameRect.height);
+	//lprintfln("LOG frame left %d, top %d, width %d, height %d",frameRect.left,frameRect.top,frameRect.width,frameRect.height);
 	//lprintfln("LOG rows %d, columns %d, currentFrame %d", currentRow, currentColumn,currentFrame);
 }
 

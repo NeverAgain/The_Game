@@ -11,16 +11,28 @@ RenderEngine::RenderEngine(GameWorld *gmWorldRef)
 	gameWorldRef = gmWorldRef;
 }
 
+RenderEngine::~RenderEngine(){
+	delete gameWorldRef;
+}
+
+void RenderEngine::setRenderEngineState(RenderEngineState state){
+	this->renderEngineState = state;
+}
+
+RenderEngine::RenderEngineState RenderEngine::getRenderEngineState(){
+	return renderEngineState;
+}
+
 void RenderEngine::enableRenderEngine(){
-	enable = true;
+	this->enable = true;
 }
 
 void RenderEngine::disableRenderEngine(){
-	enable = false;
+	this->enable = false;
 }
 
 bool RenderEngine::getIfEnable(){
-	return enable;
+	return this->enable;
 }
 
 void RenderEngine::setMDepth(float mDepth){
@@ -97,6 +109,7 @@ void RenderEngine::draw()
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glFinish();
+
 }
 
 /**

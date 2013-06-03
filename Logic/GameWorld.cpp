@@ -16,7 +16,11 @@ GameWorld::~GameWorld(){
 	delete &gameObjList;
 };
 
-GameWorld::GameWorldState GameWorld::checkGameWorldState(){
+void GameWorld::setGameWorldState(GameWorldState state){
+	this->gameWorldState = state;
+}
+
+GameWorld::GameWorldState GameWorld::getGameWorldState(){
 	return gameWorldState;
 };
 
