@@ -30,20 +30,10 @@ class RenderEngine
 		RenderEngineState getRenderEngineState();
 		void setRenderEngineState(RenderEngineState state);
 
-		void setMDepth(float mDepth);
-		float getMDepth();
-
-		void setMStartTime(GLfloat mDepth);
-		GLfloat getMStartTime();
-
-		GLfloat mStartTime;
-		GLfloat mDepth;
-
 		void initGL();
 		void setViewport(int width, int height);
-		void draw();
-		void computeZoomFactor(MAPoint2d point);
 		void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
+		void draw();
 
 	private:
 		bool enable;

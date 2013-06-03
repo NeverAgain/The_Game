@@ -10,7 +10,7 @@
 #include <mavsprintf.h>
 #include <MAUtil/Moblet.h>
 #include <MAUtil/GLMoblet.h>
-#include <GLES/gl.h>
+#include <GLES2/gl2.h>
 #include "MAHeaders.h"
 
 using namespace MAUtil;
@@ -36,7 +36,7 @@ public:
 	 * Initialize rendering parameters.
 	 */
 	MyGLMoblet() :
-		GLMoblet(GLMoblet::GL1)
+		GLMoblet(GLMoblet::GL2)
 	{
 		gameWorld = new GameWorld();
 		addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
@@ -48,8 +48,6 @@ public:
 		gameWorld->addGameObj(player2);
 
 		renderEngine = new RenderEngine(gameWorld);
-		renderEngine->setMDepth(5.0f);
-		renderEngine->setMStartTime(maGetMilliSecondCount());
 
 		Environment::getEnvironment().addFocusListener(this);
 
@@ -124,7 +122,6 @@ public:
 	 */
 	void pointerPressEvent(MAPoint2d point)
 	{
-		renderEngine->computeZoomFactor(point);
 	}
 
 	/**
@@ -132,7 +129,6 @@ public:
 	 */
 	void pointerMoveEvent(MAPoint2d point)
 	{
-		renderEngine->computeZoomFactor(point);
 	}
 
 
