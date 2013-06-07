@@ -35,23 +35,63 @@ bool RenderEngine::getIfEnable(){
 	return this->enable;
 }
 
-void RenderEngine::initGL()
-{
+bool RenderEngine::initGL(){
+	GLuint ver;
+
+	width = EXTENT_X(maGetScrSize());
+	height = EXTENT_Y(maGetScrSize());
+
+    glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
+	glClearDepthf(1.0f);
+
+	alphaBlending(true);
+	textures(true);
+	blendMode(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	enableRenderEngine();
+
+	return true;
 }
 
-void RenderEngine::setViewport(int width, int height)
+void RenderEngine::alphaBlending(bool enable){
+	if(enable){
+		glEnable(GL_BLEND);
+	}else{
+		glDisable(GL_BLEND);
+	}
+}
+
+void RenderEngine::textures(bool enable){
+	if(enable){
+		glEnable(GL_TEXTURE_2D);
+	}else{
+		glDisable(GL_TEXTURE_2D);
+	}
+}
+
+void RenderEngine::blendMode(int srcBlendMode,int dstBlendMode){
+	glBlendFunc(srcBlendMode, dstBlendMode);
+}
+
+void RenderEngine::checkGLError(const char* where) {
+	GLenum err = glGetError();
+	if (err != GL_NO_ERROR) {
+		lprintfln("%s: glGetError returned %x", where, err);
+	}
+}
+
+void RenderEngine::setViewport(int viewWidth, int viewHeight)
 {
 	// Protect against divide by zero.
-	if (0 == height)
-	{
-		height = 1;
+	if (0 == viewHeight) {
+		viewHeight = 1;
 	}
 
 	// Set viewport and perspective.
-	glViewport(0, 0, (GLint)width, (GLint)height);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	GLfloat ratio = (GLfloat)width / (GLfloat)height;
+	glViewport(0, 0, (GLint)viewWidth, (GLint)viewHeight);
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadIdentity();
+	GLfloat ratio = (GLfloat)viewWidth / (GLfloat)viewHeight;
 	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
 }
 
@@ -60,6 +100,23 @@ void RenderEngine::setViewport(int width, int height)
  */
 void RenderEngine::draw()
 {
+	lprintfln("LOG drawing");
+	GLfloat vVertices[] = { -1.0f, 1.0f, 0.0f,
+							 1.0f, 1.0f, 0.0f,
+							 1.0f,-1.0f, 0.0f,
+							-1.0f,-1.0f, 0.0f };
+
+	glViewport(0, 0, (GLint)width, (GLint)height);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+	checkGLError("glVertexAttribPointer");
+
+	glEnableVertexAttribArray(0);
+	checkGLError("glEnableVertexAttribArray");
+
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+	checkGLError("glDrawArrays");
 }
 
 /**
@@ -75,5 +132,5 @@ void RenderEngine::gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, G
 	GLfloat xmin = ymin * aspect;
 	GLfloat xmax = ymax * aspect;
 
-	glFrustumf(xmin, xmax, ymin, ymax, zNear, zFar);
+	//glFrustumf(xmin, xmax, ymin, ymax, zNear, zFar);
 }

@@ -61,20 +61,15 @@ public:
 	 */
 	void init()
 	{
+		// Initialize OpenGL.
+		renderEngine->initGL();
 
-		//gameWorld = new GameWorld();
-		//addTimer(gameWorld, LOGIC_UPDATE_INTERVAL, 0);
 
-		//renderEngine = new RenderEngine();
 		// Set the GL viewport to be the entire MoSync screen.
 		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
 		//AnimationData *data = new AnimationData(R_BASIC,1,1);
 		data = new AnimationData(R_TEST,5,5);
-
-		// Initialize OpenGL.
-		renderEngine->initGL();
-		renderEngine->enableRenderEngine();
 
 		// Call draw 60 times per second.
 		setPreferredFramesPerSecond(60);
