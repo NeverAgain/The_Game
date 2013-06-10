@@ -41,13 +41,68 @@ bool RenderEngine::initGL(){
 	width = EXTENT_X(maGetScrSize());
 	height = EXTENT_Y(maGetScrSize());
 
-    glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
-	glClearDepthf(1.0f);
-
 	alphaBlending(true);
 	textures(true);
+	cullFace(true);
+	depthTest(true);
 	blendMode(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	GLuint vertexShader;
+	String vertexShaderSource = getVertexShader();
+	vertexShader = loadShader(vertexShaderSource.c_str(),GL_VERTEX_SHADER);
+	checkGLError("Load vertex shader");
+
+	GLuint fragmentShader;
+	String fragmentShaderSource = getFragmentShader();
+	fragmentShader = loadShader(fragmentShaderSource.c_str(),GL_FRAGMENT_SHADER);
+	checkGLError("Load fragment shader");
+
+	GLuint programObject;
+	// Create the program object
+	programObject = glCreateProgram();
+	if (programObject == 0) {
+		lprintfln("Could not create program!");
+		return FALSE;
+	}
+	checkGLError("Create program");
+
+	glAttachShader(programObject, vertexShader);
+	checkGLError("Attach vertex shader");
+
+	glAttachShader(programObject, fragmentShader);
+	checkGLError("Attach fragment shader");
+
+	// Bind vPosition to attribute 0
+	glBindAttribLocation(programObject, 0, "vPosition");
+	checkGLError("Bind vPosition to vertex shader");
+
+	// Link the program
+	glLinkProgram(programObject);
+
+	GLint linked;
+	// Check the link status
+	glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
+	if (!linked) {
+		lprintfln("Failed to link shader!");
+		GLint infoLen = 0;
+		glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
+		if (infoLen == 0) // android bug.
+			infoLen = 1024;
+		if (infoLen > 1) {
+			char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+			glGetProgramInfoLog(programObject, infoLen, NULL, infoLog);
+			lprintfln("Error linking program:\n%s\n", infoLog);
+			free(infoLog);
+		}
+		glDeleteProgram(programObject);
+		return FALSE;
+	}
+	// Store the program object
+	fullShader = programObject;
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
+	glClearDepthf(1.0f);
 	enableRenderEngine();
 
 	return true;
@@ -69,8 +124,47 @@ void RenderEngine::textures(bool enable){
 	}
 }
 
+void RenderEngine::cullFace(bool enable){
+	if(enable){
+		glEnable(GL_CULL_FACE);
+	} else {
+		glDisable(GL_CULL_FACE);
+	}
+}
+
+void RenderEngine::depthTest(bool enable){
+	if(enable){
+		glEnable(GL_DEPTH_TEST);
+	} else {
+		glDisable(GL_DEPTH_TEST);
+	}
+}
+
 void RenderEngine::blendMode(int srcBlendMode,int dstBlendMode){
 	glBlendFunc(srcBlendMode, dstBlendMode);
+}
+
+//Util functions////////////////////////////////////////////////////////////////////
+String RenderEngine::getVertexShader(){
+	int len = maGetDataSize(R_VERTEX_SHADER);
+	char buffer[len+1];
+	maReadData(R_VERTEX_SHADER,&buffer,0,len);
+	buffer[len] = '\0';
+
+	String shader = "";
+	shader.append(buffer,len);
+	return shader;
+}
+
+String RenderEngine::getFragmentShader(){
+	int len = maGetDataSize(R_FRAGMENT_SHADER);
+	char buffer[len+1];
+	maReadData(R_FRAGMENT_SHADER,&buffer,0,len);
+	buffer[len] = '\0';
+
+	String shader = "";
+	shader.append(buffer,len);
+	return shader;
 }
 
 void RenderEngine::checkGLError(const char* where) {
@@ -79,6 +173,53 @@ void RenderEngine::checkGLError(const char* where) {
 		lprintfln("%s: glGetError returned %x", where, err);
 	}
 }
+
+GLuint RenderEngine::loadShader(const char *shaderSrc, GLenum type) {
+	//lprintfln("loading shader: %s", shaderSrc);
+	checkGLError("begin loading shader");
+
+	GLuint shader;
+	GLint compiled;
+	// Create the shader object
+	shader = glCreateShader(type);
+	checkGLError("glCreateShader");
+
+	if (shader == 0) {
+		lprintfln("Invalid shader handle!");
+		return 0;
+	}
+	// Load the shader source
+	glShaderSource(shader, 1, &shaderSrc, NULL);
+	checkGLError("glShaderSource");
+
+	// Compile the shader
+	glCompileShader(shader);
+	checkGLError("glCompileShader");
+
+	// Check the compile status
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+	checkGLError("glGetShaderiv");
+
+	if (!compiled) {
+		lprintfln("Error compiling shader");
+		GLint infoLen = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+		if (infoLen == 0) // android bug.
+			infoLen = 1024;
+		if (infoLen > 1) {
+			char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+			glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
+			lprintfln("Error compiling shader:\n%s\n", infoLog);
+			free(infoLog);
+		}
+		glDeleteShader(shader);
+		return 0;
+	}
+
+	return shader;
+}
+
+//////////////////////////////////////////////////////////////////////
 
 void RenderEngine::setViewport(int viewWidth, int viewHeight)
 {
@@ -89,8 +230,6 @@ void RenderEngine::setViewport(int viewWidth, int viewHeight)
 
 	// Set viewport and perspective.
 	glViewport(0, 0, (GLint)viewWidth, (GLint)viewHeight);
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
 	GLfloat ratio = (GLfloat)viewWidth / (GLfloat)viewHeight;
 	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
 }
@@ -100,7 +239,7 @@ void RenderEngine::setViewport(int viewWidth, int viewHeight)
  */
 void RenderEngine::draw()
 {
-	lprintfln("LOG drawing");
+	//lprintfln("LOG drawing");
 	GLfloat vVertices[] = { -1.0f, 1.0f, 0.0f,
 							 1.0f, 1.0f, 0.0f,
 							 1.0f,-1.0f, 0.0f,

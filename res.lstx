@@ -1,4 +1,6 @@
 <resources>
 	<image id="R_TEST" resource="Resource/computer_look_back.png"/>
 	<image id="R_BASIC" resource="Resource/basic.png"/>
+	<binary id="R_VERTEX_SHADER" resource="Resource/vertex_shader.txt"/>
+	<binary id="R_FRAGMENT_SHADER" resource="Resource/fragment_shader.txt"/>
 </resources>

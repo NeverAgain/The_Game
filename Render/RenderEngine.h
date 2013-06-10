@@ -7,6 +7,9 @@
 
 #include <GLES2/gl2.h>
 #include "../Logic/GameWorld.h"
+#include <MAFS/File.h>
+#include <MAUtil/String.h>
+#include "MAHeaders.h"
 
 #ifndef RENDERENGINE_H_
 #define RENDERENGINE_H_
@@ -33,6 +36,8 @@ class RenderEngine
 		//Render settings
 		void alphaBlending(bool enable);
 		void textures(bool enable);
+		void cullFace(bool enable);
+		void depthTest(bool enable);
 		void blendMode(int srcBlendMode, int dstBlendMode);
 
 		//Setup
@@ -43,7 +48,13 @@ class RenderEngine
 
 		//Runtime functions
 		void draw();
+
+		//Util functions
+		//TODO move to different file
+		String getVertexShader();
+		String getFragmentShader();
 		void checkGLError(const char* where);
+		GLuint loadShader(const char *shaderSrc,GLenum type);
 
 	private:
 		bool enable;
@@ -52,6 +63,8 @@ class RenderEngine
 
 		int width;
 		int height;
+
+		GLuint fullShader;
 
 };
 
