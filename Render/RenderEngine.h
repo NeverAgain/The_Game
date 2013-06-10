@@ -55,6 +55,7 @@ class RenderEngine
 		String getFragmentShader();
 		void checkGLError(const char* where);
 		GLuint loadShader(const char *shaderSrc,GLenum type);
+		GLuint buildProgram(GLuint vertexShader, GLuint fragmentShader);
 
 	private:
 		bool enable;

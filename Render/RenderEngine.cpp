@@ -57,49 +57,10 @@ bool RenderEngine::initGL(){
 	fragmentShader = loadShader(fragmentShaderSource.c_str(),GL_FRAGMENT_SHADER);
 	checkGLError("Load fragment shader");
 
-	GLuint programObject;
-	// Create the program object
-	programObject = glCreateProgram();
-	if (programObject == 0) {
-		lprintfln("Could not create program!");
-		return FALSE;
-	}
-	checkGLError("Create program");
+	GLuint programObject = buildProgram(vertexShader, fragmentShader);
 
-	glAttachShader(programObject, vertexShader);
-	checkGLError("Attach vertex shader");
-
-	glAttachShader(programObject, fragmentShader);
-	checkGLError("Attach fragment shader");
-
-	// Bind vPosition to attribute 0
-	glBindAttribLocation(programObject, 0, "vPosition");
-	checkGLError("Bind vPosition to vertex shader");
-
-	// Link the program
-	glLinkProgram(programObject);
-
-	GLint linked;
-	// Check the link status
-	glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
-	if (!linked) {
-		lprintfln("Failed to link shader!");
-		GLint infoLen = 0;
-		glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
-		if (infoLen == 0) // android bug.
-			infoLen = 1024;
-		if (infoLen > 1) {
-			char* infoLog = (char*) malloc(sizeof(char) * infoLen);
-			glGetProgramInfoLog(programObject, infoLen, NULL, infoLog);
-			lprintfln("Error linking program:\n%s\n", infoLog);
-			free(infoLog);
-		}
-		glDeleteProgram(programObject);
-		return FALSE;
-	}
 	// Store the program object
 	fullShader = programObject;
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
 	glClearDepthf(1.0f);
@@ -217,6 +178,51 @@ GLuint RenderEngine::loadShader(const char *shaderSrc, GLenum type) {
 	}
 
 	return shader;
+}
+
+GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
+	GLuint programObject;
+	// Create the program object
+	programObject = glCreateProgram();
+	if (programObject == 0) {
+		lprintfln("Could not create program!");
+		return FALSE;
+	}
+	checkGLError("Create program");
+
+	glAttachShader(programObject, vertexShader);
+	checkGLError("Attach vertex shader");
+
+	glAttachShader(programObject, fragmentShader);
+	checkGLError("Attach fragment shader");
+
+	// Bind vPosition to attribute 0
+	glBindAttribLocation(programObject, 0, "vPosition");
+	checkGLError("Bind vPosition to vertex shader");
+
+	// Link the program
+	glLinkProgram(programObject);
+
+	GLint linked;
+	// Check the link status
+	glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
+	if (!linked) {
+		lprintfln("Failed to link shader!");
+		GLint infoLen = 0;
+		glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
+		if (infoLen == 0) // android bug.
+			infoLen = 1024;
+		if (infoLen > 1) {
+			char* infoLog = (char*) malloc(sizeof(char) * infoLen);
+			glGetProgramInfoLog(programObject, infoLen, NULL, infoLog);
+			lprintfln("Error linking program:\n%s\n", infoLog);
+			free(infoLog);
+		}
+		glDeleteProgram(programObject);
+		return FALSE;
+	}
+
+	return programObject;
 }
 
 //////////////////////////////////////////////////////////////////////
