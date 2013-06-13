@@ -66,10 +66,10 @@ public:
 
 
 		// Set the GL viewport to be the entire MoSync screen.
-		renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
+		//renderEngine->setViewport(EXTENT_X(maGetScrSize()),EXTENT_Y(maGetScrSize()));
 
 		//AnimationData *data = new AnimationData(R_BASIC,1,1);
-		data = new AnimationData(R_TEST,5,5);
+		//data = new AnimationData(R_TEST,5,5);
 
 		// Call draw 60 times per second.
 		setPreferredFramesPerSecond(60);

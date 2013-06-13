@@ -14,6 +14,23 @@
 #ifndef RENDERENGINE_H_
 #define RENDERENGINE_H_
 
+typedef struct {
+    float Position[3];
+    float Color[4];
+} Vertex;
+
+const Vertex Vertices[] = {
+    {{1, -1, 0}, {1, 0, 0, 1}},
+    {{1, 1, 0}, {0, 1, 0, 1}},
+    {{-1, 1, 0}, {0, 0, 1, 1}},
+    {{-1, -1, 0}, {0, 0, 0, 1}}
+};
+
+const GLubyte Indices[] = {
+     0, 1, 2,
+     2, 3, 0
+};
+
 class RenderEngine
 {
 	public :
@@ -21,6 +38,14 @@ class RenderEngine
 			RUN,
 			PAUSE
 		};
+
+		GLuint _colorRenderBuffer;
+
+		GLuint _positionData;
+		GLuint _colorData;
+
+	    GLuint _vertexBuffer;
+	    GLuint _indexBuffer;
 
 
 		RenderEngine(GameWorld *gameWorld);
@@ -42,6 +67,9 @@ class RenderEngine
 
 		//Setup
 		bool initGL();
+		void setupRenderBuffer();
+		void setupFrameBuffer();
+		void setupVertexBufferObj();
 		void setViewport(int width, int height);
 		void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
 		void bindTexture();
@@ -64,8 +92,6 @@ class RenderEngine
 
 		int width;
 		int height;
-
-		GLuint fullShader;
 
 };
 

@@ -35,40 +35,66 @@ bool RenderEngine::getIfEnable(){
 	return this->enable;
 }
 
+//setup functions////////////////////////////////////////////////////
 bool RenderEngine::initGL(){
 	GLuint ver;
 
 	width = EXTENT_X(maGetScrSize());
 	height = EXTENT_Y(maGetScrSize());
-
+	/*
 	alphaBlending(true);
 	textures(true);
 	cullFace(true);
 	depthTest(true);
 	blendMode(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	 */
 
-	GLuint vertexShader;
+	//setupRenderBuffer();
+	//setupFrameBuffer();
+	setupVertexBufferObj();
+
 	String vertexShaderSource = getVertexShader();
-	vertexShader = loadShader(vertexShaderSource.c_str(),GL_VERTEX_SHADER);
+	GLuint vertexShader = loadShader(vertexShaderSource.c_str(),GL_VERTEX_SHADER);
 	checkGLError("Load vertex shader");
 
-	GLuint fragmentShader;
 	String fragmentShaderSource = getFragmentShader();
-	fragmentShader = loadShader(fragmentShaderSource.c_str(),GL_FRAGMENT_SHADER);
+	GLuint fragmentShader = loadShader(fragmentShaderSource.c_str(),GL_FRAGMENT_SHADER);
 	checkGLError("Load fragment shader");
 
-	GLuint programObject = buildProgram(vertexShader, fragmentShader);
+	buildProgram(vertexShader, fragmentShader);
 
-	// Store the program object
-	fullShader = programObject;
 
-    glClearColor(1.0f, 1.0f, 1.0f, 0.5f);
+    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
 	glClearDepthf(1.0f);
 	enableRenderEngine();
 
 	return true;
 }
 
+void RenderEngine::setupRenderBuffer(){
+	glGenRenderbuffers(1,&_colorRenderBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER,_colorRenderBuffer);
+}
+
+void RenderEngine::setupFrameBuffer(){
+	GLuint framebuffer;
+	glGenFramebuffers(1, &framebuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderBuffer);
+}
+
+void RenderEngine::setupVertexBufferObj(){
+	glGenBuffers(1,&_vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+
+	glGenBuffers(1,&_indexBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, _indexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+}
+
+//////////////////////////////////////////////////////////////////////
+// render engine settings/////////////////////////////////////////////
 void RenderEngine::alphaBlending(bool enable){
 	if(enable){
 		glEnable(GL_BLEND);
@@ -104,7 +130,7 @@ void RenderEngine::depthTest(bool enable){
 void RenderEngine::blendMode(int srcBlendMode,int dstBlendMode){
 	glBlendFunc(srcBlendMode, dstBlendMode);
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 //Util functions////////////////////////////////////////////////////////////////////
 String RenderEngine::getVertexShader(){
 	int len = maGetDataSize(R_VERTEX_SHADER);
@@ -131,7 +157,7 @@ String RenderEngine::getFragmentShader(){
 void RenderEngine::checkGLError(const char* where) {
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		lprintfln("%s: glGetError returned %x", where, err);
+		lprintfln("LOG %s: glGetError returned %x", where, err);
 	}
 }
 
@@ -162,7 +188,7 @@ GLuint RenderEngine::loadShader(const char *shaderSrc, GLenum type) {
 	checkGLError("glGetShaderiv");
 
 	if (!compiled) {
-		lprintfln("Error compiling shader");
+		lprintfln("LOG Error compiling shader");
 		GLint infoLen = 0;
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
 		if (infoLen == 0) // android bug.
@@ -170,7 +196,7 @@ GLuint RenderEngine::loadShader(const char *shaderSrc, GLenum type) {
 		if (infoLen > 1) {
 			char* infoLog = (char*) malloc(sizeof(char) * infoLen);
 			glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
-			lprintfln("Error compiling shader:\n%s\n", infoLog);
+			lprintfln("LOG Error compiling shader:\n%s\n", infoLog);
 			free(infoLog);
 		}
 		glDeleteShader(shader);
@@ -185,7 +211,7 @@ GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
 	// Create the program object
 	programObject = glCreateProgram();
 	if (programObject == 0) {
-		lprintfln("Could not create program!");
+		lprintfln("LOG Could not create program!");
 		return FALSE;
 	}
 	checkGLError("Create program");
@@ -195,10 +221,6 @@ GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
 
 	glAttachShader(programObject, fragmentShader);
 	checkGLError("Attach fragment shader");
-
-	// Bind vPosition to attribute 0
-	glBindAttribLocation(programObject, 0, "vPosition");
-	checkGLError("Bind vPosition to vertex shader");
 
 	// Link the program
 	glLinkProgram(programObject);
@@ -222,11 +244,19 @@ GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
 		return FALSE;
 	}
 
+	glUseProgram(programObject);
+
+	//set variables to be use in shaders
+	_positionData = glGetAttribLocation(programObject,"Position");
+	_colorData = glGetAttribLocation(programObject,"SourceColor");
+	glEnableVertexAttribArray(_positionData);
+	glEnableVertexAttribArray(_colorData);
+
 	return programObject;
 }
 
 //////////////////////////////////////////////////////////////////////
-
+// Render functions///////////////////////////////////////////////////
 void RenderEngine::setViewport(int viewWidth, int viewHeight)
 {
 	// Protect against divide by zero.
@@ -245,23 +275,18 @@ void RenderEngine::setViewport(int viewWidth, int viewHeight)
  */
 void RenderEngine::draw()
 {
-	//lprintfln("LOG drawing");
-	GLfloat vVertices[] = { -1.0f, 1.0f, 0.0f,
-							 1.0f, 1.0f, 0.0f,
-							 1.0f,-1.0f, 0.0f,
-							-1.0f,-1.0f, 0.0f };
+    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
 
 	glViewport(0, 0, (GLint)width, (GLint)height);
-	glClear(GL_COLOR_BUFFER_BIT);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	checkGLError("glVertexAttribPointer");
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
 
-	glEnableVertexAttribArray(0);
-	checkGLError("glEnableVertexAttribArray");
+	glVertexAttribPointer(_positionData, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),0);
+	glVertexAttribPointer(_colorData, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),(GLvoid*) (sizeof(float) * 3));
 
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-	checkGLError("glDrawArrays");
+	glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE,0);
 }
 
 /**
