@@ -14,6 +14,7 @@
 #ifndef RENDERENGINE_H_
 #define RENDERENGINE_H_
 
+
 typedef struct {
     float Position[3];
     float Color[4];
@@ -43,6 +44,7 @@ class RenderEngine
 
 		GLuint _positionData;
 		GLuint _colorData;
+		GLuint _projectionUniform;
 
 	    GLuint _vertexBuffer;
 	    GLuint _indexBuffer;

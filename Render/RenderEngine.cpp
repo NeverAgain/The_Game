@@ -41,13 +41,13 @@ bool RenderEngine::initGL(){
 
 	width = EXTENT_X(maGetScrSize());
 	height = EXTENT_Y(maGetScrSize());
-	/*
+
 	alphaBlending(true);
 	textures(true);
-	cullFace(true);
-	depthTest(true);
+	//cullFace(true);
+	//depthTest(true);
 	blendMode(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	 */
+
 
 	//setupRenderBuffer();
 	//setupFrameBuffer();
@@ -252,6 +252,14 @@ GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
 	glEnableVertexAttribArray(_positionData);
 	glEnableVertexAttribArray(_colorData);
 
+	_projectionUniform = glGetUniformLocation(programObject, "Projection");
+
+
+	CC3GLMatrix *projection = [CC3GLMatrix matrix];
+	float h = 4.0f * height / width;
+	[projection populateFromFrustumLeft:-2 andRight:2 andBottom:-h/2 andTop:h/2 andNear:4 andFar:10];
+
+
 	return programObject;
 }
 
@@ -278,6 +286,8 @@ void RenderEngine::draw()
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
+
+
 	glViewport(0, 0, (GLint)width, (GLint)height);
 
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
@@ -285,6 +295,8 @@ void RenderEngine::draw()
 
 	glVertexAttribPointer(_positionData, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),0);
 	glVertexAttribPointer(_colorData, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),(GLvoid*) (sizeof(float) * 3));
+
+	//glUniformMatrix4fv(_projectionUniform, 1, 0, projection.glMatrix);
 
 	glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE,0);
 }
