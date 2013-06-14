@@ -255,10 +255,11 @@ GLuint RenderEngine::buildProgram(GLuint vertexShader, GLuint fragmentShader){
 	_projectionUniform = glGetUniformLocation(programObject, "Projection");
 
 
+	/*
 	CC3GLMatrix *projection = [CC3GLMatrix matrix];
 	float h = 4.0f * height / width;
 	[projection populateFromFrustumLeft:-2 andRight:2 andBottom:-h/2 andTop:h/2 andNear:4 andFar:10];
-
+	*/
 
 	return programObject;
 }
